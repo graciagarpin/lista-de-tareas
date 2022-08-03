@@ -4,47 +4,47 @@ import '../styles/ItemsList.scss';
 import Item from './Item';
 
 function ItemsList() {
-  const [tareas, setTareas] = useState([]);
+  const [items, setItems] = useState([]);
 
-  const agregarTarea = (tarea) => {
-    if (tarea.texto.trim()) {
-      tarea.texto = tarea.texto.trim();
-      const tareasActualizadas = [tarea, ...tareas];
-      setTareas(tareasActualizadas);
+  const addItem = (item) => {
+    if (item.text.trim()) {
+      item.text = item.text.trim();
+      const updatedItems = [item, ...items];
+      setItems(updatedItems);
 
-      console.log(tarea);
+      console.log(item);
     }
   };
 
-  const eliminarTarea = (id) => {
-    const tareasActualizadas = tareas.filter((tarea) => tarea.id !== id);
-    setTareas(tareasActualizadas);
+  const deleteItem = (id) => {
+    const updatedItems = items.filter((item) => item.id !== id);
+    setItems(updatedItems);
   };
 
-  const completarTarea = (id) => {
-    const tareasActualizadas = tareas.map((tarea) => {
-      if (tarea.id === id) {
-        // !tarea.completada -> hacemos que si era falsa se vuelva verdadera y viceversa, será lo contrario a lo que reciba
-        tarea.completada = !tarea.completada;
+  const buyItem = (id) => {
+    const updatedItems = items.map((item) => {
+      if (item.id === id) {
+        // !item.bought -> hacemos que si era falsa se vuelva verdadera y viceversa, será lo contrario a lo que reciba
+        item.bought = !item.bought;
       }
-      return tarea;
+      return item;
     });
-    setTareas(tareasActualizadas);
+    setItems(updatedItems);
   };
-  //aplicar la clase scss completada
+  //aplicar la clase scss bought
 
   return (
     <>
-      <NewItemForm onSubmit={agregarTarea} />
-      <div className="tareas-lista-contenedor">
-        {tareas.map((tarea) => (
+      <NewItemForm onSubmit={addItem} />
+      <div className="items-list-container">
+        {items.map((item) => (
           <Item
-            key={tarea.id}
-            id={tarea.id}
-            texto={tarea.texto}
-            completada={tarea.completada}
-            eliminarTarea={eliminarTarea}
-            completarTarea={completarTarea}
+            key={item.id}
+            id={item.id}
+            text={item.text}
+            bought={item.bought}
+            deleteItem={deleteItem}
+            buyItem={buyItem}
           />
         ))}
       </div>

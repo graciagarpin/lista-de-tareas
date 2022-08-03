@@ -5,8 +5,8 @@ import ItemsList from './ItemsList';
 function App() {
   return (
     <>
-      <div className="aplicacion-tareas"></div>
-      <div className="tareas-lista-principal">
+      <div className="principal-page"></div>
+      <div className="principal-shopping-list">
         <h1>Mi Lista de la Compra</h1>
         <ItemsList />
       </div>

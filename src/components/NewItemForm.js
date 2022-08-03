@@ -6,36 +6,36 @@ function NewItemForm(props) {
   const [input, setInput] = useState('');
 
   // Al manejar el Cambio manejamos el valor del input y ese valor actualizado es el que vamos a asignar para la tarea cuando el usuario quiera agregar la tarea
-  const manejarCambio = (ev) => {
+  const handleInputChange = (ev) => {
     setInput(ev.target.value);
     console.log(ev.target.value);
   };
 
-  const manejarEnvio = (ev) => {
+  const handleFormSubmit = (ev) => {
     ev.preventDefault();
     console.log('Enviando...');
-    const tareaNueva = {
+    const newItem = {
       id: uuidv4(),
-      texto: input,
-      completada: false,
+      text: input,
+      bought: false,
     };
 
-    //Le pasamos la función agregarTarea desde ListaDeTareas.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar una tareaNueva al listado
-    props.onSubmit(tareaNueva);
-    // al pasarle (tareaNueva) por parámetro, la recibe agregarTarea en ListaDeTareas.js  y tareaNueva se trata como tarea y la pinta.
+    //Le pasamos la función addItem desde ListaDeTareas.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar una newItem al listado
+    props.onSubmit(newItem);
+    // al pasarle (newItem) por parámetro, la recibe addItem en ListaDeTareas.js  y newItem se trata como tarea y la pinta.
     // Flipa la comunicación entre componentes!!!!!
   };
 
   return (
-    <form className="tarea-formulario" onSubmit={manejarEnvio}>
+    <form className="item-form" onSubmit={handleFormSubmit}>
       <input
-        className="tarea-input"
+        className="item-input"
         type="text"
-        placeholder="Escribe una tarea"
-        name="texto"
-        onChange={manejarCambio}
+        placeholder="Escribe un producto "
+        name="text"
+        onChange={handleInputChange}
       />
-      <button className="tarea-boton"> Añadir </button>
+      <button className="add-item-btn"> Añadir </button>
     </form>
   );
 }

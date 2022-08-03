@@ -17,15 +17,15 @@ h1{
   text-align: center;
   margin: 20px 0;
 }
-.aplicacion-tareas{
+.principal-page{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
-/*Lista de tareas*/
-.tareas-lista-principal {
+/*Lista de items*/
+.principal-shopping-list {
   width: 600px;
   min-height: 500px;
   background-color: grey;

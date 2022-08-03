@@ -1,4 +1,4 @@
-.tarea-contenedor{
+.item-container{
     width: 500px;
     min-height: 65px;
     background-color: black;
@@ -13,17 +13,17 @@
 }
 
 //nth-child -> significa " el enésimo hijo"
-.tarea-contenedor:nth-child(3n + 1) {
+.item-container:nth-child(3n + 1) {
     background-color: #1b1b32;
 }
-.tarea-contenedor:nth-child(3n + 2) {
+.item-container:nth-child(3n + 2) {
     background-color: #2a2a40;
 }
-.tarea-contenedor:nth-child(3n + 3) {
+.item-container:nth-child(3n + 3) {
     background-color: #3b3b4f;
 }
 
-.tarea-texto{
+.item-text{
 width: 100%;
 height: 100%;
 font-size: 20px;
@@ -32,13 +32,13 @@ align-items: center;
 overflow-wrap: anywhere;
 }
 
-.tarea-icono{
+.delete-icon{
     width:25px ;
     height:25px;
     margin: 5px;
     }
 
-.tarea-contenedor.completada{
+.item-container.bought{
     background-color: pink;
     text-decoration: line-through;
 }
