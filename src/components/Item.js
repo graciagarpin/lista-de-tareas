@@ -1,16 +1,9 @@
 import React from 'react';
-import '../styles/Tarea.scss';
-import { AiOutlineClockCircle } from 'react-icons/ai'; 
+import '../styles/Item.scss';
+import { AiFillDelete } from 'react-icons/ai';
 
 //le paso las props en un objeto:
-function Tarea({
-  id,
-  texto,
-  completada,
-  completarTarea,
-  eliminarTarea,
-}) {
-
+function Tarea({ id, texto, completada, completarTarea, eliminarTarea }) {
   return (
     <div
       className={
@@ -20,11 +13,14 @@ function Tarea({
       <div className="tarea-texto" onClick={() => completarTarea(id)}>
         {texto}
       </div>
-      <div className="tarea-contenedor-iconos" onClick={() => eliminarTarea(id)}>
-        <AiOutlineClockCircle className="tarea-icono" />
+      <div
+        className="tarea-contenedor-iconos"
+        onClick={() => eliminarTarea(id)}
+      >
+        <AiFillDelete className="tarea-icono" />
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default Tarea;
