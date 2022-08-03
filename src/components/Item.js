@@ -3,7 +3,7 @@ import '../styles/Item.scss';
 import { AiFillDelete } from 'react-icons/ai';
 
 //le paso las props en un objeto:
-function Tarea({ id, texto, completada, completarTarea, eliminarTarea }) {
+function Item({ id, texto, completada, completarTarea, eliminarTarea }) {
   return (
     <div
       className={
@@ -23,4 +23,4 @@ function Tarea({ id, texto, completada, completarTarea, eliminarTarea }) {
   );
 }
 
-export default Tarea;
+export default Item;
