@@ -1,10 +1,10 @@
-.tarea-formulario{
+.item-form{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
-.tarea-input{
+.item-input{
     width: 350px;
     font-size: 18px;
     background-color: white;
@@ -12,7 +12,7 @@
     border: 2px solid green;
     outline: none;
 }
-.tarea-boton{
+.add-item-btn{
     padding: 16px;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
