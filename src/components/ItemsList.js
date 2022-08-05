@@ -7,8 +7,8 @@ function ItemsList() {
   const [items, setItems] = useState([]);
 
   const addItem = (item) => {
-    if (item.text.trim()) {
-      item.text = item.text.trim();
+    if (item.data.trim()) {
+      item.data = item.data.trim();
       const updatedItems = [item, ...items];
       setItems(updatedItems);
 
@@ -41,7 +41,7 @@ function ItemsList() {
           <Item
             key={item.id}
             id={item.id}
-            text={item.text}
+            data={item.data}
             bought={item.bought}
             deleteItem={deleteItem}
             buyItem={buyItem}

@@ -1,23 +1,24 @@
-*{
+* {
   margin: 0;
   box-sizing: border-box;
 }
 
 html,
-body{
+body {
   color: white;
   background-color: rgb(129, 40, 40);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-top: 40px;
 }
-h1{
+h1 {
   color: rgb(8, 3, 3);
   font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
-  text-align: center;
+  data-align: center;
   margin: 20px 0;
 }
-.principal-page{
+.principal-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -30,6 +31,6 @@ h1{
   min-height: 500px;
   background-color: grey;
   padding: 25px;
-  margin:10px;
+  margin: 10px;
   border-radius: 25px;
 }

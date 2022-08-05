@@ -16,7 +16,7 @@ function NewItemForm(props) {
     console.log('Enviando...');
     const newItem = {
       id: uuidv4(),
-      text: input,
+      data: input,
       bought: false,
     };
 
@@ -30,9 +30,9 @@ function NewItemForm(props) {
     <form className="item-form" onSubmit={handleFormSubmit}>
       <input
         className="item-input"
-        type="text"
+        type="data"
         placeholder="Escribe un producto "
-        name="text"
+        name="data"
         onChange={handleInputChange}
       />
       <button className="add-item-btn"> Añadir </button>

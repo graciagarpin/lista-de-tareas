@@ -1,44 +1,44 @@
-.item-container{
-    width: 500px;
-    min-height: 65px;
-    background-color: black;
-    margin: 5px 0;
-    padding: 8px 15px 8px 20px ;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 7px;
-    border: 1px solid white;
-    cursor: pointer;
+.item-container {
+  width: 500px;
+  min-height: 65px;
+  background-color: black;
+  margin: 5px 0;
+  padding: 8px 15px 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+  border: 1px solid white;
+  cursor: pointer;
 }
 
 //nth-child -> significa " el enésimo hijo"
 .item-container:nth-child(3n + 1) {
-    background-color: #1b1b32;
+  background-color: #1b1b32;
 }
 .item-container:nth-child(3n + 2) {
-    background-color: #2a2a40;
+  background-color: #2a2a40;
 }
 .item-container:nth-child(3n + 3) {
-    background-color: #3b3b4f;
+  background-color: #3b3b4f;
 }
 
-.item-text{
-width: 100%;
-height: 100%;
-font-size: 20px;
-display: flex;
-align-items: center;
-overflow-wrap: anywhere;
+.item-data {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
 }
 
-.delete-icon{
-    width:25px ;
-    height:25px;
-    margin: 5px;
-    }
+.delete-icon {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}
 
-.item-container.bought{
-    background-color: pink;
-    text-decoration: line-through;
+.item-container.bought {
+  background-color: pink;
+  data-decoration: line-through;
 }
