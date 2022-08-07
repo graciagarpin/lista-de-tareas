@@ -1,6 +1,6 @@
 import '../styles/App.scss';
-import '../styles/ItemsList.scss';
-import ItemsList from './ItemsList';
+import '../styles/ProductsList.scss';
+import ProductsList from './ProductsList';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <div className="principal-page"></div>
       <div className="principal-shopping-list">
         <h1>Mi Lista de la Compra</h1>
-        <ItemsList />
+        <ProductsList />
       </div>
     </>
   );
