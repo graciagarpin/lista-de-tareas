@@ -23,7 +23,7 @@
   background-color: #3b3b4f;
 }
 
-.product-data {
+.product-productName {
   width: 100%;
   height: 100%;
   font-size: 20px;
@@ -38,7 +38,7 @@
   margin: 5px;
 }
 
-.product-container.bought {
+.product-container.crossedOff {
   background-color: pink;
   text-decoration: line-through;
 }

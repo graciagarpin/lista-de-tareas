@@ -16,8 +16,8 @@ function NewProductForm(props) {
     console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
-      data: input,
-      bought: false,
+      productName: input,
+      crossedOff: false,
     };
 
     //Le pasamos la función addProduct desde ProductsList.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar una newProduct al listado
@@ -32,7 +32,7 @@ function NewProductForm(props) {
         className="product-input"
         type="data"
         placeholder="Escribe un producto "
-        name="data"
+        name="productName"
         onChange={handleInputChange}
       />
       <button className="add-product-btn"> Añadir </button>

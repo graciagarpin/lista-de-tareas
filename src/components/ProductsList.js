@@ -7,8 +7,8 @@ function ProductsList() {
   const [products, setProducts] = useState([]);
 
   const addProduct = (product) => {
-    if (product.data.trim()) {
-      product.data = product.data.trim();
+    if (product.productName.trim()) {
+      product.productName = product.productName.trim();
       const updatedProducts = [product, ...products];
       setProducts(updatedProducts);
 
@@ -24,14 +24,14 @@ function ProductsList() {
   const buyProduct = (id) => {
     const updatedProducts = products.map((product) => {
       if (product.id === id) {
-        // !product.bought -> hacemos que si era falsa se vuelva verdadera y viceversa, será lo contrario a lo que reciba
-        product.bought = !product.bought;
+        // !product.crossedOff -> hacemos que si era falsa se vuelva verdadera y viceversa, será lo contrario a lo que reciba
+        product.crossedOff = !product.crossedOff;
       }
       return product;
     });
     setProducts(updatedProducts);
   };
-  //aplicar la clase scss bought
+  //aplicar la clase scss crossedOff
 
   return (
     <>
@@ -41,8 +41,8 @@ function ProductsList() {
           <Product
             key={product.id}
             id={product.id}
-            data={product.data}
-            bought={product.bought}
+            productName={product.productName}
+            crossedOff={product.crossedOff}
             deleteProduct={deleteProduct}
             buyProduct={buyProduct}
           />
