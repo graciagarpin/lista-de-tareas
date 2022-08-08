@@ -21,7 +21,7 @@ function ProductsList() {
     setProducts(updatedProducts);
   };
 
-  const buyProduct = (id) => {
+  const markProduct = (id) => {
     const updatedProducts = products.map((product) => {
       if (product.id === id) {
         // !product.crossedOff -> hacemos que si era falsa se vuelva verdadera y viceversa, será lo contrario a lo que reciba
@@ -44,7 +44,7 @@ function ProductsList() {
             productName={product.productName}
             crossedOff={product.crossedOff}
             deleteProduct={deleteProduct}
-            buyProduct={buyProduct}
+            markProduct={markProduct}
           />
         ))}
       </div>

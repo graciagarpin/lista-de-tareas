@@ -3,14 +3,14 @@ import '../styles/Product.scss';
 import { AiFillDelete } from 'react-icons/ai';
 
 //le paso las props en un objeto:
-function Product({ id, productName, crossedOff, buyProduct, deleteProduct }) {
+function Product({ id, productName, crossedOff, markProduct, deleteProduct }) {
   return (
     <div
       className={
         crossedOff ? 'product-container crossedOff' : 'product-container'
       }
     >
-      <div className="product-productName" onClick={() => buyProduct(id)}>
+      <div className="product-productName" onClick={() => markProduct(id)}>
         {productName}
       </div>
       <div
