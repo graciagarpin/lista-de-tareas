@@ -43,6 +43,7 @@ function ProductsList() {
             id={product.id}
             productName={product.productName}
             productVariety={product.productVariety}
+            productMarket={product.productMarket}
             crossedOff={product.crossedOff}
             deleteProduct={deleteProduct}
             markProduct={markProduct}
