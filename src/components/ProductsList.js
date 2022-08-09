@@ -7,8 +7,8 @@ function ProductsList() {
   const [products, setProducts] = useState([]);
 
   const addProduct = (product) => {
-    if (product.productName.trim()) {
-      product.productName = product.productName.trim();
+    if (product.productData.productName.trim()) {
+      product.productData.productName = product.productData.productName.trim();
       const updatedProducts = [product, ...products];
       setProducts(updatedProducts);
 
@@ -41,9 +41,7 @@ function ProductsList() {
           <Product
             key={product.id}
             id={product.id}
-            productName={product.productName}
-            productVariety={product.productVariety}
-            productMarket={product.productMarket}
+            productData={product.productData}
             crossedOff={product.crossedOff}
             deleteProduct={deleteProduct}
             markProduct={markProduct}

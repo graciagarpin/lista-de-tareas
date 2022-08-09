@@ -3,23 +3,36 @@ import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
 function NewProductForm(props) {
+  const [productData, setProductData] = useState({
+    productName: '',
+    productVariety: '',
+    productMarket: '',
+  });
 
+  // const [productName, setProductName] = useState('');
+  // const [productVariety, setProductVariety] = useState('');
 
-  const [productName, setProductName] = useState('');
-  const [productVariety, setProductVariety] = useState('');
-
-  // variable de estado para controlar input select supermercado
-  const [productMarket, setproductMarket] = useState('');
+  // // variable de estado para controlar input select supermercado
+  // const [productMarket, setproductMarket] = useState('');
 
   // Al manejar el Cambio manejamos el valor del input y ese valor actualizado es el que vamos a asignar para el producto cuando el usuario quiera agregar el producto
   const handleInputChange = (ev) => {
-    if (ev.target.name === 'productName') {
-      setProductName(ev.target.value);
-    } else if (ev.target.name === 'productVariety') {
-      setProductVariety(ev.target.value);
-    } else if (ev.target.name === 'productMarket') {
-      setproductMarket(ev.target.value);
-    }
+    // if (ev.target.name === 'productName') {
+    //   setProductName(ev.target.value);
+    // } else if (ev.target.name === 'productVariety') {
+    //   setProductVariety(ev.target.value);
+    // } else if (ev.target.name === 'productMarket') {
+    //   setproductMarket(ev.target.value);
+    // }
+
+    const newValue = ev.target.value;
+    const property = ev.currentTarget.name;
+    console.log(property);
+    setProductData({
+      ...productData, [property]: newValue
+    });
+
+    console.log(productData);
   };
 
   const handleFormSubmit = (ev) => {
@@ -27,9 +40,7 @@ function NewProductForm(props) {
     console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
-      productName: productName,
-      productVariety: productVariety,
-      productMarket: productMarket,
+      productData: productData,
       crossedOff: false,
     };
 
@@ -61,7 +72,7 @@ function NewProductForm(props) {
         name='productMarket'
         id='productMarket'
         onChange={handleInputChange}
-        value={productMarket}
+        value={productData.productMarket}
       >
         <option disabled value=''>
           Escoge una opción

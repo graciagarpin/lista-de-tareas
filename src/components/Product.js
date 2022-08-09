@@ -5,9 +5,7 @@ import { AiFillDelete } from 'react-icons/ai';
 //le paso las props en un objeto:
 function Product({
   id,
-  productName,
-  productVariety,
-  productMarket,
+  productData,
   crossedOff,
   markProduct,
   deleteProduct,
@@ -19,10 +17,10 @@ function Product({
       }
     >
       <div className="product-productName" onClick={() => markProduct(id)}>
-        {productName} {productVariety}
+        {productData.productName} {productData.productVariety}
         
       </div>
-      <p>{`Tienda: ${productMarket}`}</p>
+      <p>{`Tienda: ${productData.productMarket}`}</p>
       <div
         className="product-container-icons"
         onClick={() => deleteProduct(id)}
