@@ -3,36 +3,30 @@ import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
 function NewProductForm(props) {
+  // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productName: '',
     productVariety: '',
     productMarket: '',
   });
 
-  // const [productName, setProductName] = useState('');
-  // const [productVariety, setProductVariety] = useState('');
-
-  // // variable de estado para controlar input select supermercado
-  // const [productMarket, setproductMarket] = useState('');
-
-  // Al manejar el Cambio manejamos el valor del input y ese valor actualizado es el que vamos a asignar para el producto cuando el usuario quiera agregar el producto
+  // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
-    // if (ev.target.name === 'productName') {
-    //   setProductName(ev.target.value);
-    // } else if (ev.target.name === 'productVariety') {
-    //   setProductVariety(ev.target.value);
-    // } else if (ev.target.name === 'productMarket') {
-    //   setproductMarket(ev.target.value);
-    // }
-
     const newValue = ev.target.value;
     const property = ev.currentTarget.name;
-    console.log(property);
     setProductData({
-      ...productData, [property]: newValue
+      ...productData,
+      [property]: newValue,
     });
+  };
 
-    console.log(productData);
+  // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
+  const deleteInputValues = () => {
+    setProductData({
+      productName: '',
+      productVariety: '',
+      productMarket: '',
+    });
   };
 
   const handleFormSubmit = (ev) => {
@@ -43,11 +37,9 @@ function NewProductForm(props) {
       productData: productData,
       crossedOff: false,
     };
-
-    //Le pasamos la función addProduct desde ProductsList.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar un newProduct al listado
     props.addProduct(newProduct);
-    // al pasarle (newProduct) como argumento, la recibe la función addProduct en ProductsList.js  y newProduct se trata como tarea y la pinta.
-    // Flipa la comunicación entre componentes!!!!!
+
+    deleteInputValues();
   };
 
   return (
@@ -55,9 +47,11 @@ function NewProductForm(props) {
       <input
         className='product-input'
         type='data'
-        placeholder='Escribe un producto '
+        placeholder='Escribe un producto'
         name='productName'
         onChange={handleInputChange}
+        // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
+        value={productData.productName}
       />
       <input
         className='product-input'
@@ -65,9 +59,11 @@ function NewProductForm(props) {
         placeholder='Escribe la variedad'
         name='productVariety'
         onChange={handleInputChange}
+        
+        value={productData.productVariety}
       />
 
-      <label htmlFor='supermarket'>Comercio:</label>
+      <label htmlFor='supermarket'>Tienda:</label>
       <select
         name='productMarket'
         id='productMarket'
