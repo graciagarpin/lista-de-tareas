@@ -3,20 +3,26 @@ import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
 function NewProductForm(props) {
-  const [input, setInput] = useState('');
+  const [productName, setProductName] = useState('');
+  const [productVariety, setProductVariety] = useState('');
 
   // Al manejar el Cambio manejamos el valor del input y ese valor actualizado es el que vamos a asignar para el producto cuando el usuario quiera agregar el producto
   const handleInputChange = (ev) => {
-    setInput(ev.target.value);
-    console.log(ev.target.value);
+    if (ev.target.name === 'productName') {
+      setProductName(ev.target.value);
+    } else if (ev.target.name === 'productVariety') {
+      setProductVariety(ev.target.value);
+    }
   };
 
+  console.log(productName, productVariety);
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
     console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
-      productName: input,
+      productName: productName,
+      productVariety: productVariety,
       crossedOff: false,
     };
 
@@ -33,6 +39,13 @@ function NewProductForm(props) {
         type="data"
         placeholder="Escribe un producto "
         name="productName"
+        onChange={handleInputChange}
+      />
+      <input
+        className="product-input"
+        type="data"
+        placeholder="Escribe la variedad"
+        name="productVariety"
         onChange={handleInputChange}
       />
       <button className="add-product-btn"> Añadir </button>
