@@ -35,7 +35,7 @@ function ProductsList() {
 
   return (
     <>
-      <NewProductForm onSubmit={addProduct} />
+      <NewProductForm addProduct={addProduct} />
       <div className="products-list-container">
         {products.map((product) => (
           <Product

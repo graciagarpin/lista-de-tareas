@@ -20,9 +20,9 @@ function NewProductForm(props) {
       crossedOff: false,
     };
 
-    //Le pasamos la función addProduct desde ProductsList.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar una newProduct al listado
-    props.onSubmit(newProduct);
-    // al pasarle (newProduct) por parámetro, la recibe addProduct en ProductsList.js  y newProduct se trata como tarea y la pinta.
+    //Le pasamos la función addProduct desde ProductsList.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar un newProduct al listado
+    props.addProduct(newProduct);
+    // al pasarle (newProduct) como argumento, la recibe addProduct en ProductsList.js  y newProduct se trata como tarea y la pinta.
     // Flipa la comunicación entre componentes!!!!!
   };
 
