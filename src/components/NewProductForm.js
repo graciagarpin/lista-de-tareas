@@ -8,6 +8,7 @@ function NewProductForm(props) {
     productName: '',
     productVariety: '',
     productMarket: '',
+    productCategory: '',
   });
 
   // módulo 3 día 3. controlar inputs con react.
@@ -21,11 +22,12 @@ function NewProductForm(props) {
   };
 
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
-  const deleteInputValues = () => {
+  const resetInputValues = () => {
     setProductData({
       productName: '',
       productVariety: '',
       productMarket: '',
+      productCategory: '',
     });
   };
 
@@ -39,7 +41,7 @@ function NewProductForm(props) {
     };
     props.addProduct(newProduct);
 
-    deleteInputValues();
+    resetInputValues();
   };
 
   return (
@@ -79,6 +81,25 @@ function NewProductForm(props) {
         <option value='Consum'>Consum</option>
         <option value='Lidl'>Lidl</option>
         <option value='Otro'>Otro...</option>
+      </select>
+
+      <label htmlFor='category'>Categoría:</label>
+      <select
+        name='productCategory'
+        id='productCategory'
+        onChange={handleInputChange}
+        value={productData.productCategory}
+      >
+        <option disabled value=''>
+          Escoge una opción
+        </option>
+        <option value='Grupo 1'>Grupo 1: Leche y derivados</option>
+        <option value='Grupo 2'>Grupo 2: Carnes, pescados y huevos</option>
+        <option value='Grupo 3'>Grupo 3: Legumbres y frutos secos</option>
+        <option value='Grupo 4'>Grupo 4: Verduras y Hortalizas</option>
+        <option value='Grupo 5'>Grupo 5: Frutas</option>
+        <option value='Grupo 6'>Grupo 6: Cereales y derivados, azúcar y dulces</option>
+        <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
       </select>
       <button className='add-product-btn'> Añadir </button>
     </form>

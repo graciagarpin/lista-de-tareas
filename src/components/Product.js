@@ -4,6 +4,9 @@ import { AiFillDelete } from 'react-icons/ai';
 
 // por props nos llega la info de newProduct -> product. product.data es un objeto de strings
 function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
+  function isInputEmpty (property, renderedProperty){
+    return property === ''? '' :  `${renderedProperty}: ${property}` ;
+  }
   return (
     <div
       className={
@@ -13,7 +16,8 @@ function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
       <div className='product-productName' onClick={() => markProduct(id)}>
         {productData.productName} {productData.productVariety}
       </div>
-      <p>{`Tienda: ${productData.productMarket}`}</p>
+      <p>{isInputEmpty(productData.productMarket, 'Tienda')}</p>
+      <p>{isInputEmpty(productData.productCategory, 'Categoría')}</p>
       <div
         className='product-container-icons'
         onClick={() => deleteProduct(id)}
