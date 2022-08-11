@@ -3,52 +3,105 @@ import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
 function NewProductForm(props) {
-  const [productName, setProductName] = useState('');
-  const [productVariety, setProductVariety] = useState('');
+  // variable de estado global para recoger toda la info sobre el producto
+  const [productData, setProductData] = useState({
+    productName: '',
+    productVariety: '',
+    productMarket: '',
+    productCategory: '',
+  });
 
-  // Al manejar el Cambio manejamos el valor del input y ese valor actualizado es el que vamos a asignar para el producto cuando el usuario quiera agregar el producto
+  // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
-    if (ev.target.name === 'productName') {
-      setProductName(ev.target.value);
-    } else if (ev.target.name === 'productVariety') {
-      setProductVariety(ev.target.value);
-    }
+    const newValue = ev.target.value;
+    const property = ev.currentTarget.name;
+    setProductData({
+      ...productData,
+      [property]: newValue,
+    });
   };
 
-  console.log(productName, productVariety);
+  // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
+  const resetInputValues = () => {
+    setProductData({
+      productName: '',
+      productVariety: '',
+      productMarket: '',
+      productCategory: '',
+    });
+  };
+
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
     console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
-      productName: productName,
-      productVariety: productVariety,
+      productData: productData,
       crossedOff: false,
     };
-
-    //Le pasamos la función addProduct desde ProductsList.js por props a la hija para que lo aplique a la hora de enviar formulario (onSubmit) y nos va a permitir agregar un newProduct al listado
     props.addProduct(newProduct);
-    // al pasarle (newProduct) como argumento, la recibe la función addProduct en ProductsList.js  y newProduct se trata como tarea y la pinta.
-    // Flipa la comunicación entre componentes!!!!!
+
+    resetInputValues();
   };
 
   return (
-    <form className="product-form" onSubmit={handleFormSubmit}>
+    <form className='product-form' onSubmit={handleFormSubmit}>
       <input
-        className="product-input"
-        type="data"
-        placeholder="Escribe un producto "
-        name="productName"
+        className='product-input'
+        type='data'
+        placeholder='Escribe un producto'
+        name='productName'
         onChange={handleInputChange}
+        // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
+        value={productData.productName}
       />
       <input
-        className="product-input"
-        type="data"
-        placeholder="Escribe la variedad"
-        name="productVariety"
+        className='product-input'
+        type='data'
+        placeholder='Escribe la variedad'
+        name='productVariety'
         onChange={handleInputChange}
+        
+        value={productData.productVariety}
       />
-      <button className="add-product-btn"> Añadir </button>
+
+      <label htmlFor='supermarket'>Tienda:</label>
+      <select
+        name='productMarket'
+        id='productMarket'
+        onChange={handleInputChange}
+        value={productData.productMarket}
+      >
+        <option disabled value=''>
+          Escoge una opción
+        </option>
+        <option value='Carrefour'>Carrefour</option>
+        <option value='Alcampo'>Alcampo</option>
+        <option value='Mercadona'>Mercadona</option>
+        <option value='Consum'>Consum</option>
+        <option value='Lidl'>Lidl</option>
+        <option value='Otro'>Otro...</option>
+      </select>
+
+      <label htmlFor='category'>Categoría:</label>
+      <select
+        name='productCategory'
+        id='productCategory'
+        onChange={handleInputChange}
+        value={productData.productCategory}
+      >
+        <option disabled value=''>
+          Escoge una opción
+        </option>
+        <option value='Grupo 1'>Grupo 1: Leche y derivados</option>
+        <option value='Grupo 2'>Grupo 2: Carnes, pescados y huevos</option>
+        <option value='Grupo 3'>Grupo 3: Legumbres y frutos secos</option>
+        <option value='Grupo 4'>Grupo 4: Verduras y Hortalizas</option>
+        <option value='Grupo 5'>Grupo 5: Frutas</option>
+        <option value='Grupo 6'>Grupo 6: Cereales y derivados, azúcar y dulces</option>
+        <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
+      </select>
+      <button className='add-product-btn'> Añadir </button>
     </form>
   );
 }
