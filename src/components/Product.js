@@ -14,6 +14,7 @@ function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
         {productData.productName} {productData.productVariety}
       </div>
       <p>{`Tienda: ${productData.productMarket}`}</p>
+      <p>{`Categoría: ${productData.productCategory}`}</p>
       <div
         className='product-container-icons'
         onClick={() => deleteProduct(id)}
