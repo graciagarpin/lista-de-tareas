@@ -8,6 +8,7 @@ function NewProductForm(props) {
     productName: '',
     productVariety: '',
     productMarket: '',
+    productCategory: '',
   });
 
   // módulo 3 día 3. controlar inputs con react.
@@ -79,6 +80,24 @@ function NewProductForm(props) {
         <option value='Consum'>Consum</option>
         <option value='Lidl'>Lidl</option>
         <option value='Otro'>Otro...</option>
+      </select>
+      <label htmlFor='category'>Categoría:</label>
+      <select
+        name='productCategory'
+        id='productCategory'
+        onChange={handleInputChange}
+        value={productData.productCategory}
+      >
+        <option disabled value=''>
+          Escoge una opción
+        </option>
+        <option value='grupo1'>Grupo 1: Leche y derivados</option>
+        <option value='grupo2'>Grupo 2: Carnes, pescados y huevos</option>
+        <option value='grupo3'>Grupo 3: Patatas, legumbres, frutos secos</option>
+        <option value='grupo4'>Grupo 4: Verduras y Hortalizas</option>
+        <option value='grupo5'>Grupo 5: Frutas</option>
+        <option value='grupo6'>Grupo 6: Cereales y derivados, azúcar y dulces</option>
+        <option value='grupo7'>Grupo 7: Grasas, aceite y mantequilla</option>
       </select>
       <button className='add-product-btn'> Añadir </button>
     </form>
