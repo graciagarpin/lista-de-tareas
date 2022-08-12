@@ -9,6 +9,7 @@ function NewProductForm(props) {
     productVariety: '',
     productMarket: '',
     productCategory: '',
+    productUnits: '',
   });
 
   // módulo 3 día 3. controlar inputs con react.
@@ -28,6 +29,7 @@ function NewProductForm(props) {
       productVariety: '',
       productMarket: '',
       productCategory: '',
+      productUnits: '',
     });
   };
 
@@ -43,6 +45,20 @@ function NewProductForm(props) {
 
     resetInputValues();
   };
+
+  const [markets, setMarkets] = useState([
+    'Mercadona',
+    'Carrefour',
+    'Alcampo',
+    'Consum',
+    'Lidl',
+    'Otro',
+  ]);
+
+  const renderMarketOptions = markets.sort().map((market, index) => {
+    return <option value={market} key={index}>{market}</option>
+  })
+
 
   return (
     <form className='product-form' onSubmit={handleFormSubmit}>
@@ -61,8 +77,15 @@ function NewProductForm(props) {
         placeholder='Escribe la variedad'
         name='productVariety'
         onChange={handleInputChange}
-        
         value={productData.productVariety}
+      />
+      <input
+        className='product-input'
+        type='data'
+        placeholder='Unidades'
+        name='productUnits'
+        onChange={handleInputChange}
+        value={productData.productUnits}
       />
 
       <label htmlFor='supermarket'>Tienda:</label>
@@ -75,12 +98,13 @@ function NewProductForm(props) {
         <option disabled value=''>
           Escoge una opción
         </option>
-        <option value='Carrefour'>Carrefour</option>
+        {renderMarketOptions}
+        {/* <option value='Carrefour'>Carrefour</option>
         <option value='Alcampo'>Alcampo</option>
         <option value='Mercadona'>Mercadona</option>
         <option value='Consum'>Consum</option>
         <option value='Lidl'>Lidl</option>
-        <option value='Otro'>Otro...</option>
+        <option value='Otro'>Otro...</option> */}
       </select>
 
       <label htmlFor='category'>Categoría:</label>
@@ -98,7 +122,9 @@ function NewProductForm(props) {
         <option value='Grupo 3'>Grupo 3: Legumbres y frutos secos</option>
         <option value='Grupo 4'>Grupo 4: Verduras y Hortalizas</option>
         <option value='Grupo 5'>Grupo 5: Frutas</option>
-        <option value='Grupo 6'>Grupo 6: Cereales y derivados, azúcar y dulces</option>
+        <option value='Grupo 6'>
+          Grupo 6: Cereales y derivados, azúcar y dulces
+        </option>
         <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
       </select>
       <button className='add-product-btn'> Añadir </button>
