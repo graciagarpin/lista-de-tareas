@@ -10,6 +10,7 @@ function NewProductForm(props) {
     productMarket: '',
     productCategory: '',
     productUnits: '',
+    productWeight: '',
   });
 
   // módulo 3 día 3. controlar inputs con react.
@@ -30,6 +31,7 @@ function NewProductForm(props) {
       productMarket: '',
       productCategory: '',
       productUnits: '',
+      productWeight: '',
     });
   };
 
@@ -56,46 +58,58 @@ function NewProductForm(props) {
   ]);
 
   const renderMarketOptions = markets.sort().map((market, index) => {
-    return <option value={market} key={index}>{market}</option>
-  })
-
+    return (
+      <option value={market} key={index}>
+        {market}
+      </option>
+    );
+  });
 
   return (
-    <form className='product-form' onSubmit={handleFormSubmit}>
+    <form className="product-form" onSubmit={handleFormSubmit}>
       <input
-        className='product-input'
-        type='data'
-        placeholder='Escribe un producto'
-        name='productName'
+        className="product-input"
+        type="data"
+        placeholder="Escribe un producto"
+        name="productName"
         onChange={handleInputChange}
         // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
         value={productData.productName}
       />
       <input
-        className='product-input'
-        type='data'
-        placeholder='Escribe la variedad'
-        name='productVariety'
+        className="product-input"
+        type="data"
+        placeholder="Escribe la variedad"
+        name="productVariety"
         onChange={handleInputChange}
         value={productData.productVariety}
       />
       <input
-        className='product-input'
-        type='data'
-        placeholder='Unidades'
-        name='productUnits'
+        className="product-input"
+        type="data"
+        placeholder="Unidades"
+        name="productUnits"
         onChange={handleInputChange}
         value={productData.productUnits}
       />
+      <input
+        className="product-input"
+        type="data"
+        placeholder="0,000"
+        name="productWeight"
+        onChange={handleInputChange}
+        value={productData.productWeight}
+      />
 
-      <label htmlFor='supermarket'>Tienda:</label>
+      <label htmlFor="weight">Kgs.</label>
+      <label htmlFor="supermarket">Tienda:</label>
       <select
-        name='productMarket'
-        id='productMarket'
+        name="productMarket"
+        id="productMarket"
         onChange={handleInputChange}
         value={productData.productMarket}
       >
-        <option disabled value=''>
+        <option disabled value="">
           Escoge una opción
         </option>
         {renderMarketOptions}
@@ -107,27 +121,27 @@ function NewProductForm(props) {
         <option value='Otro'>Otro...</option> */}
       </select>
 
-      <label htmlFor='category'>Categoría:</label>
+      <label htmlFor="category">Categoría:</label>
       <select
-        name='productCategory'
-        id='productCategory'
+        name="productCategory"
+        id="productCategory"
         onChange={handleInputChange}
         value={productData.productCategory}
       >
-        <option disabled value=''>
+        <option disabled value="">
           Escoge una opción
         </option>
-        <option value='Grupo 1'>Grupo 1: Leche y derivados</option>
-        <option value='Grupo 2'>Grupo 2: Carnes, pescados y huevos</option>
-        <option value='Grupo 3'>Grupo 3: Legumbres y frutos secos</option>
-        <option value='Grupo 4'>Grupo 4: Verduras y Hortalizas</option>
-        <option value='Grupo 5'>Grupo 5: Frutas</option>
-        <option value='Grupo 6'>
+        <option value="Grupo 1">Grupo 1: Leche y derivados</option>
+        <option value="Grupo 2">Grupo 2: Carnes, pescados y huevos</option>
+        <option value="Grupo 3">Grupo 3: Legumbres y frutos secos</option>
+        <option value="Grupo 4">Grupo 4: Verduras y Hortalizas</option>
+        <option value="Grupo 5">Grupo 5: Frutas</option>
+        <option value="Grupo 6">
           Grupo 6: Cereales y derivados, azúcar y dulces
         </option>
-        <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
+        <option value="Grupo 7">Grupo 7: Grasas, aceite y mantequilla</option>
       </select>
-      <button className='add-product-btn'> Añadir </button>
+      <button className="add-product-btn"> Añadir </button>
     </form>
   );
 }

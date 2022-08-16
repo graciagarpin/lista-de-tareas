@@ -13,18 +13,19 @@ function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
         crossedOff ? 'product-container crossedOff' : 'product-container'
       }
     >
-      <div className='product-productName' onClick={() => markProduct(id)}>
+      <div className="product-productName" onClick={() => markProduct(id)}>
         {productData.productName} {productData.productVariety}
       </div>
       <p> {isInputEmpty(productData.productUnits, 'uds.')}</p>
+      <p> {isInputEmpty(productData.productWeight, 'Kgs.')}</p>
 
       <p>{isInputEmpty(productData.productMarket, 'Tienda')}</p>
       <p>{isInputEmpty(productData.productCategory, 'Categoría')}</p>
       <div
-        className='product-container-icons'
+        className="product-container-icons"
         onClick={() => deleteProduct(id)}
       >
-        <AiFillDelete className='delete-icon' />
+        <AiFillDelete className="delete-icon" />
       </div>
     </div>
   );

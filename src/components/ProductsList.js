@@ -32,7 +32,7 @@ function ProductsList() {
   return (
     <>
       <NewProductForm addProduct={addProduct} />
-      <div className='products-list-container'>
+      <div className="products-list-container">
         {products.map((product) => (
           <Product
             key={product.id}
