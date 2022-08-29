@@ -5,10 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 function NewProductForm(props) {
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
-    productName: '',
-    productVariety: '',
+    // productName: '',
+    // productVariety: '',
     productMarket: '',
-    productCategory: '',
+    // productCategory: '',
     productUnits: '',
   });
 
@@ -25,10 +25,10 @@ function NewProductForm(props) {
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
     setProductData({
-      productName: '',
-      productVariety: '',
+      // productName: '',
+      // productVariety: '',
       productMarket: '',
-      productCategory: '',
+      // productCategory: '',
       productUnits: '',
     });
   };
@@ -62,7 +62,7 @@ function NewProductForm(props) {
 
   return (
     <form className='product-form' onSubmit={handleFormSubmit}>
-      <input
+      {/* <input
         className='product-input'
         type='data'
         placeholder='Escribe un producto'
@@ -78,7 +78,7 @@ function NewProductForm(props) {
         name='productVariety'
         onChange={handleInputChange}
         value={productData.productVariety}
-      />
+      /> */}
       <input
         className='product-input'
         type='data'
@@ -88,7 +88,9 @@ function NewProductForm(props) {
         value={productData.productUnits}
       />
 
-      <label htmlFor='supermarket'>Tienda:</label>
+      {/* TODO reutilizar input de tiendas más tarde */}
+
+      {/* <label htmlFor='supermarket'>Tienda:</label>
       <select
         name='productMarket'
         id='productMarket'
@@ -99,15 +101,11 @@ function NewProductForm(props) {
           Escoge una opción
         </option>
         {renderMarketOptions}
-        {/* <option value='Carrefour'>Carrefour</option>
-        <option value='Alcampo'>Alcampo</option>
-        <option value='Mercadona'>Mercadona</option>
-        <option value='Consum'>Consum</option>
-        <option value='Lidl'>Lidl</option>
-        <option value='Otro'>Otro...</option> */}
-      </select>
 
-      <label htmlFor='category'>Categoría:</label>
+      </select> */}
+
+
+      {/* <label htmlFor='category'>Categoría:</label>
       <select
         name='productCategory'
         id='productCategory'
@@ -126,7 +124,7 @@ function NewProductForm(props) {
           Grupo 6: Cereales y derivados, azúcar y dulces
         </option>
         <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
-      </select>
+      </select> */}
       <button className='add-product-btn'> Añadir </button>
     </form>
   );

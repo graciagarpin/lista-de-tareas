@@ -11,7 +11,7 @@ body {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-top: 40px;
 }
-h1 {
+h2, button {
   color: rgb(8, 3, 3);
   font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
@@ -27,8 +27,8 @@ h1 {
 
 /*Lista de products*/
 .principal-shopping-list {
-  width: 600px;
-  min-height: 500px;
+  width: auto;
+  // min-height: 500px;
   background-color: grey;
   padding: 25px;
   margin: 10px;
