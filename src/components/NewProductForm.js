@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
+
+
 function NewProductForm(props) {
+
+  const products = [
+    { productName: 'tomate', productVariety: 'cherry' },
+    { productName: 'tomate', productVariety: 'canario' },
+    { productName: 'pepino', productVariety: 'holandés' },
+    { productName: 'ciruela', productVariety: 'negra' },
+    { productName: 'lechuga', productVariety: 'iceberg' },
+  ];
+
+
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
-    // productName: '',
-    // productVariety: '',
-    productMarket: '',
-    // productCategory: '',
+
     productUnits: '',
   });
 
@@ -25,16 +34,14 @@ function NewProductForm(props) {
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
     setProductData({
-      // productName: '',
-      // productVariety: '',
-      productMarket: '',
-      // productCategory: '',
+
       productUnits: '',
     });
   };
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
+
     console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
@@ -46,39 +53,33 @@ function NewProductForm(props) {
     resetInputValues();
   };
 
-  const [markets, setMarkets] = useState([
-    'Mercadona',
-    'Carrefour',
-    'Alcampo',
-    'Consum',
-    'Lidl',
-    'Otro',
-  ]);
+  // Comentado para evitar errores
 
-  const renderMarketOptions = markets.sort().map((market, index) => {
-    return <option value={market} key={index}>{market}</option>
-  })
+  // const [markets, setMarkets] = useState([
+  //   'Mercadona',
+  //   'Carrefour',
+  //   'Alcampo',
+  //   'Consum',
+  //   'Lidl',
+  //   'Otro',
+  // ]);
 
+  // const renderMarketOptions = markets.sort().map((market, index) => {
+  //   return <option value={market} key={index}>{market}</option>
+  // })
 
   return (
     <form className='product-form' onSubmit={handleFormSubmit}>
-      {/* <input
+      <input
         className='product-input'
         type='data'
         placeholder='Escribe un producto'
         name='productName'
-        onChange={handleInputChange}
+        // onChange={handleInputChange}
         // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
         value={productData.productName}
-      />
-      <input
-        className='product-input'
-        type='data'
-        placeholder='Escribe la variedad'
-        name='productVariety'
-        onChange={handleInputChange}
-        value={productData.productVariety}
-      /> */}
+      ></input>
+
       <input
         className='product-input'
         type='data'
@@ -105,26 +106,6 @@ function NewProductForm(props) {
       </select> */}
 
 
-      {/* <label htmlFor='category'>Categoría:</label>
-      <select
-        name='productCategory'
-        id='productCategory'
-        onChange={handleInputChange}
-        value={productData.productCategory}
-      >
-        <option disabled value=''>
-          Escoge una opción
-        </option>
-        <option value='Grupo 1'>Grupo 1: Leche y derivados</option>
-        <option value='Grupo 2'>Grupo 2: Carnes, pescados y huevos</option>
-        <option value='Grupo 3'>Grupo 3: Legumbres y frutos secos</option>
-        <option value='Grupo 4'>Grupo 4: Verduras y Hortalizas</option>
-        <option value='Grupo 5'>Grupo 5: Frutas</option>
-        <option value='Grupo 6'>
-          Grupo 6: Cereales y derivados, azúcar y dulces
-        </option>
-        <option value='Grupo 7'>Grupo 7: Grasas, aceite y mantequilla</option>
-      </select> */}
       <button className='add-product-btn'> Añadir </button>
     </form>
   );

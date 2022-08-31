@@ -3,7 +3,10 @@ import NewProductForm from './NewProductForm';
 import '../styles/ProductsList.scss';
 import Product from './Product';
 
+
+
 function ProductsList() {
+
   const [products, setProducts] = useState([]);
 
   const addProduct = (product) => {
