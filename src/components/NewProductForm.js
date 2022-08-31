@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
-
-
+import ListSearchSuggestions from './ListSearchSuggestions';
 
 function NewProductForm(props) {
 
-  const products = [
-    { productName: 'tomate', productVariety: 'cherry' },
-    { productName: 'tomate', productVariety: 'canario' },
-    { productName: 'pepino', productVariety: 'holandés' },
-    { productName: 'ciruela', productVariety: 'negra' },
-    { productName: 'lechuga', productVariety: 'iceberg' },
-  ];
 
+  const [searchFilterValue, setSearchFilterValue] = useState('')
+
+  const handleNameFilter = (ev) => {
+    setSearchFilterValue(ev.target.value)
+    console.log(ev.target.value);
+  }
 
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
-
     productUnits: '',
   });
 
@@ -34,7 +31,6 @@ function NewProductForm(props) {
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
     setProductData({
-
       productUnits: '',
     });
   };
@@ -69,29 +65,33 @@ function NewProductForm(props) {
   // })
 
   return (
-    <form className='product-form' onSubmit={handleFormSubmit}>
-      <input
-        className='product-input'
-        type='data'
-        placeholder='Escribe un producto'
-        name='productName'
-        // onChange={handleInputChange}
-        // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
-        value={productData.productName}
-      ></input>
+    <>
+      <form className='product-form' onSubmit={handleFormSubmit}>
+        <input
+          className='product-input'
+          type='data'
+          placeholder='Escribe un producto'
+          name='productName'
+          // onChange={handleInputChange}
+          // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
+          value={searchFilterValue}
+          // value={productData.productName}
 
-      <input
-        className='product-input'
-        type='data'
-        placeholder='Unidades'
-        name='productUnits'
-        onChange={handleInputChange}
-        value={productData.productUnits}
-      />
+          onChange={handleNameFilter}
+        ></input>
 
-      {/* TODO reutilizar input de tiendas más tarde */}
+        <input
+          className='product-input'
+          type='data'
+          placeholder='Unidades'
+          name='productUnits'
+          onChange={handleInputChange}
+          value={productData.productUnits}
+        />
 
-      {/* <label htmlFor='supermarket'>Tienda:</label>
+        {/* TODO reutilizar input de tiendas más tarde */}
+
+        {/* <label htmlFor='supermarket'>Tienda:</label>
       <select
         name='productMarket'
         id='productMarket'
@@ -104,10 +104,15 @@ function NewProductForm(props) {
         {renderMarketOptions}
 
       </select> */}
-
-
-      <button className='add-product-btn'> Añadir </button>
-    </form>
+        <button className='add-product-btn'> Añadir </button>
+      </form>
+      <div>
+        <ListSearchSuggestions 
+        
+        searchFilterValue={searchFilterValue}
+        />
+      </div>
+    </>
   );
 }
 export default NewProductForm;
