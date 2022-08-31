@@ -13,6 +13,7 @@
   padding: 4px 0 0 4px;
   border: 2px solid green;
   outline: none;
+  color: gray;
 }
 .add-product-btn {
   padding: 16px;
@@ -25,4 +26,10 @@
   background-color: green;
   color: aliceblue;
   text-transform: capitalize;
+}
+
+.suggestion {
+  cursor: pointer;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
 }

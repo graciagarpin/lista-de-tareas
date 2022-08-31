@@ -13,6 +13,10 @@ function NewProductForm(props) {
     console.log(ev.target.value);
   }
 
+  const updateNameFilter = (value) => {
+    setSearchFilterValue(value)
+  }
+
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productUnits: '',
@@ -110,6 +114,8 @@ function NewProductForm(props) {
         <ListSearchSuggestions 
         
         searchFilterValue={searchFilterValue}
+        updateNameFilter={updateNameFilter}
+        
         />
       </div>
     </>

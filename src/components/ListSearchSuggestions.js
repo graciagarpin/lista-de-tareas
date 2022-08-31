@@ -1,15 +1,15 @@
 function ListSearchSuggestions(props) {
   // productos mock para probar que funciona
   const products = [
-    { productName: 'Tomate', productVariety: 'Cherry' },
-    { productName: 'tomate', productVariety: 'canario' },
-    { productName: 'pepino', productVariety: 'holandés' },
-    { productName: 'Ciruela', productVariety: 'Pequeña' },
-    { productName: 'Lechuga', productVariety: 'iceberg' },
-    { productName: 'Pepino', productVariety: 'Almería' },
+    { productName: 'Tomate', productVariety: 'Cherry', id : 1 },
+    { productName: 'tomate', productVariety: 'canario', id : 2 },
+    { productName: 'pepino', productVariety: 'holandés', id : 3 },
+    { productName: 'Ciruela', productVariety: 'Pequeña', id : 4 },
+    { productName: 'Lechuga', productVariety: 'iceberg', id : 5 },
+    { productName: 'Pepino', productVariety: 'Almería', id : 6 },
   ];
 
-  console.log(props.searchFilterValue);
+  // console.log(props.searchFilterValue);
 
   const filteredSuggestions = products.filter((product) => {
     if (props.searchFilterValue === '') {
@@ -26,10 +26,16 @@ function ListSearchSuggestions(props) {
     }
   });
 
-  console.log(filteredSuggestions);
+  // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué 
+  const handleSuggestionClick = (ev) => {
+    console.log(ev.target.innerHTML);
+    const inputValue = ev.target.innerHTML;
+    props.updateNameFilter(inputValue)
+  }
+  // console.log(filteredSuggestions);
 
   const renderSuggestions = filteredSuggestions.map((suggestion, index) => {
-       return <p key={index}>{suggestion.productName} {suggestion.productVariety}</p>
+       return <p className='product-input suggestion' key={index} onClick={handleSuggestionClick} value={suggestion.id} >{suggestion.productName} {suggestion.productVariety}</p>
    })
 
   return <>
