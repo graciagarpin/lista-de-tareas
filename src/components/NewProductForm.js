@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 import ListSearchSuggestions from './ListSearchSuggestions';
 
 function NewProductForm(props) {
+  // TODO separar productName y productVariety
+  // TODO ofrecer a la user botón de crear nuevo producto cuando no haya coincidencia
 
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productName: '',
-    productUnits: ''
+    productUnits: '',
   });
 
-  // variable de estado global para recoger el valor del input
-  const [searchFilterValue, setSearchFilterValue] = useState('')
+  console.log(productData);
 
+  // variable de estado global para recoger el valor del input
+  const [searchFilterValue, setSearchFilterValue] = useState('');
+
+  // función para guardar el primer valor que escribe la user (ej: 'pe' para sugerirle 'pepino')
   const handleNameFilter = (ev) => {
-    setSearchFilterValue(ev.target.value)
-    const property = ev.currentTarget.name;
-    const newValue = searchFilterValue;
-    // console.log(property);
+    setSearchFilterValue(ev.target.value);
+  };
+
+  // useEffect para que cada vez que la variable de estado se actualice, nos guarde el valor en productData
+  useEffect(() => {
     setProductData({
       ...productData,
-      [property]: newValue,
+      productName: searchFilterValue,
     });
-  }
+  }, [searchFilterValue]);
 
+  // función para guardar el valor de la sugerencia que ha tomado
   const updateNameFilter = (value) => {
-    setSearchFilterValue(value)
-    resetInputValues();
-  }
-  // console.log(searchFilterValue);
-  
+    if (value !== '') {
+      setSearchFilterValue(value);
+    }
+  };
 
   // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
@@ -45,28 +51,24 @@ function NewProductForm(props) {
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
     setProductData({
-      productName: '',
-      productUnits: ''
+      productUnits: '',
     });
+    setSearchFilterValue('');
   };
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
-
-    // console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
       productData: productData,
       crossedOff: false,
     };
     props.addProduct(newProduct);
-
-
+    console.log(newProduct);
     resetInputValues();
   };
 
   // Comentado para evitar errores
-
   // const [markets, setMarkets] = useState([
   //   'Mercadona',
   //   'Carrefour',
@@ -88,13 +90,8 @@ function NewProductForm(props) {
           type='data'
           placeholder='Escribe un producto'
           name='productName'
-          // onChange={handleInputChange}
-          // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
           value={searchFilterValue}
-          // value={productData.productName}
-
           onChange={handleNameFilter}
-
         ></input>
 
         <input
@@ -124,11 +121,9 @@ function NewProductForm(props) {
         <button className='add-product-btn'> Añadir </button>
       </form>
       <div>
-        <ListSearchSuggestions 
-        
-        searchFilterValue={searchFilterValue}
-        updateNameFilter={updateNameFilter}
-        
+        <ListSearchSuggestions
+          searchFilterValue={searchFilterValue}
+          updateNameFilter={updateNameFilter}
         />
       </div>
     </>

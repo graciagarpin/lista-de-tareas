@@ -1,12 +1,12 @@
 function ListSearchSuggestions(props) {
   // productos mock para probar que funciona
   const products = [
-    { productName: 'Tomate', productVariety: 'Cherry', id : 1 },
-    { productName: 'tomate', productVariety: 'canario', id : 2 },
-    { productName: 'pepino', productVariety: 'holandés', id : 3 },
-    { productName: 'Ciruela', productVariety: 'Pequeña', id : 4 },
-    { productName: 'Lechuga', productVariety: 'iceberg', id : 5 },
-    { productName: 'Pepino', productVariety: 'Almería', id : 6 },
+    { productName: 'Tomate', productVariety: 'Cherry', id: 1 },
+    { productName: 'tomate', productVariety: 'canario', id: 2 },
+    { productName: 'pepino', productVariety: 'holandés', id: 3 },
+    { productName: 'Ciruela', productVariety: 'Pequeña', id: 4 },
+    { productName: 'Lechuga', productVariety: 'iceberg', id: 5 },
+    { productName: 'Pepino', productVariety: 'Almería', id: 6 },
   ];
 
   // console.log(props.searchFilterValue);
@@ -26,22 +26,28 @@ function ListSearchSuggestions(props) {
     }
   });
 
-  // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué 
+  // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué
   const handleSuggestionClick = (ev) => {
     // console.log(ev.target.innerHTML);
     const inputValue = ev.target.innerHTML;
-
-    props.updateNameFilter(inputValue)
-  }
+    props.updateNameFilter(inputValue);
+  };
   // console.log(filteredSuggestions);
 
   const renderSuggestions = filteredSuggestions.map((suggestion, index) => {
-       return <p className='product-input suggestion' key={index} onClick={handleSuggestionClick} value={suggestion.id} >{suggestion.productName} {suggestion.productVariety}</p>
-   })
+    return (
+      <p
+        className='product-input suggestion'
+        key={index}
+        onClick={handleSuggestionClick}
+        value={suggestion.id}
+      >
+        {suggestion.productName} {suggestion.productVariety}
+      </p>
+    );
+  });
 
-  return <>
-  {renderSuggestions}
-  </>;
+  return <>{renderSuggestions}</>;
 }
 
 export default ListSearchSuggestions;

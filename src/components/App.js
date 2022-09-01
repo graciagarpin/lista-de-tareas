@@ -3,8 +3,6 @@ import '../styles/ProductsList.scss';
 import CreateNewProduct from './create-new-product/CreateNewProduct';
 import ProductsList from './ProductsList';
 
-
-
 function App() {
   return (
     <>
@@ -13,7 +11,7 @@ function App() {
         <CreateNewProduct />
       </div>
       <div className='principal-shopping-list'>
-        <h2>Mi Lista de la Compra</h2>
+        <h2>Lista de la Compra</h2>
         <ProductsList />
       </div>
     </>
