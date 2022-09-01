@@ -1,4 +1,4 @@
-function ListSearchSuggestions(props) {
+function SearchProductList(props) {
   // productos mock para probar que funciona
   const products = [
     { productName: 'Tomate', productVariety: 'Cherry', id: 1 },
@@ -37,7 +37,7 @@ function ListSearchSuggestions(props) {
   const renderSuggestions = filteredSuggestions.map((suggestion, index) => {
     return (
       <p
-        className='product-input suggestion'
+        className="product-input suggestion"
         key={index}
         onClick={handleSuggestionClick}
         value={suggestion.id}
@@ -50,4 +50,4 @@ function ListSearchSuggestions(props) {
   return <>{renderSuggestions}</>;
 }
 
-export default ListSearchSuggestions;
+export default SearchProductList;

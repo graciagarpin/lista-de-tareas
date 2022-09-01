@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
-import ListSearchSuggestions from './ListSearchSuggestions';
+import SearchProductList from './SearchProductList';
 
 function NewProductForm(props) {
   // TODO separar productName y productVariety
@@ -84,21 +84,21 @@ function NewProductForm(props) {
 
   return (
     <>
-      <form className='product-form' onSubmit={handleFormSubmit}>
+      <form className="product-form" onSubmit={handleFormSubmit}>
         <input
-          className='product-input'
-          type='data'
-          placeholder='Escribe un producto'
-          name='productName'
+          className="product-input"
+          type="data"
+          placeholder="Escribe un producto"
+          name="productName"
           value={searchFilterValue}
           onChange={handleNameFilter}
         ></input>
 
         <input
-          className='product-input'
-          type='data'
-          placeholder='Unidades'
-          name='productUnits'
+          className="product-input"
+          type="data"
+          placeholder="Unidades"
+          name="productUnits"
           onChange={handleInputChange}
           value={productData.productUnits}
         />
@@ -118,10 +118,10 @@ function NewProductForm(props) {
         {renderMarketOptions}
 
       </select> */}
-        <button className='add-product-btn'> Añadir </button>
+        <button className="add-product-btn"> Añadir </button>
       </form>
       <div>
-        <ListSearchSuggestions
+        <SearchProductList
           searchFilterValue={searchFilterValue}
           updateNameFilter={updateNameFilter}
         />
