@@ -9,6 +9,8 @@ function ProductsList() {
 
   const [products, setProducts] = useState([]);
 
+  
+
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
       product.productData.productName = product.productData.productName.trim();

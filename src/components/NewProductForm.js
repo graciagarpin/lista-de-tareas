@@ -5,22 +5,32 @@ import ListSearchSuggestions from './ListSearchSuggestions';
 
 function NewProductForm(props) {
 
+  // variable de estado global para recoger toda la info sobre el producto
+  const [productData, setProductData] = useState({
+    productName: '',
+    productUnits: ''
+  });
 
+  // variable de estado global para recoger el valor del input
   const [searchFilterValue, setSearchFilterValue] = useState('')
 
   const handleNameFilter = (ev) => {
     setSearchFilterValue(ev.target.value)
-    console.log(ev.target.value);
+    const property = ev.currentTarget.name;
+    const newValue = searchFilterValue;
+    // console.log(property);
+    setProductData({
+      ...productData,
+      [property]: newValue,
+    });
   }
 
   const updateNameFilter = (value) => {
     setSearchFilterValue(value)
+    resetInputValues();
   }
-
-  // variable de estado global para recoger toda la info sobre el producto
-  const [productData, setProductData] = useState({
-    productUnits: '',
-  });
+  // console.log(searchFilterValue);
+  
 
   // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
@@ -35,20 +45,22 @@ function NewProductForm(props) {
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
     setProductData({
-      productUnits: '',
+      productName: '',
+      productUnits: ''
     });
   };
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
 
-    console.log('Enviando...');
+    // console.log('Enviando...');
     const newProduct = {
       id: uuidv4(),
       productData: productData,
       crossedOff: false,
     };
     props.addProduct(newProduct);
+
 
     resetInputValues();
   };
@@ -82,6 +94,7 @@ function NewProductForm(props) {
           // value={productData.productName}
 
           onChange={handleNameFilter}
+
         ></input>
 
         <input

@@ -28,8 +28,9 @@ function ListSearchSuggestions(props) {
 
   // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué 
   const handleSuggestionClick = (ev) => {
-    console.log(ev.target.innerHTML);
+    // console.log(ev.target.innerHTML);
     const inputValue = ev.target.innerHTML;
+
     props.updateNameFilter(inputValue)
   }
   // console.log(filteredSuggestions);
