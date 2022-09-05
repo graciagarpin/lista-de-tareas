@@ -18,8 +18,8 @@ function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
       </div>
       <p> {isInputEmpty(productData.productUnits, 'uds.')}</p>
 
-      <p>{isInputEmpty(productData.productMarket, 'Tienda')}</p>
-      <p>{isInputEmpty(productData.productCategory, 'Categoría')}</p>
+      {/* <p>{isInputEmpty(productData.productMarket, 'Tienda')}</p>
+      <p>{isInputEmpty(productData.productCategory, 'Categoría')}</p> */}
       <div
         className='product-container-icons'
         onClick={() => deleteProduct(id)}
