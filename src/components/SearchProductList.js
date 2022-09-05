@@ -11,7 +11,10 @@ function SearchProductList(props) {
 
   // console.log(props.searchFilterValue);
 
+  
   const filteredSuggestions = products.filter((product) => {
+    let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
+    console.log(nameAndVarietyProduct);
     if (props.searchFilterValue === '') {
       return false;
     } else {
@@ -20,6 +23,9 @@ function SearchProductList(props) {
           .toLowerCase()
           .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
         product.productVariety
+          .toLowerCase()
+          .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
+        nameAndVarietyProduct
           .toLowerCase()
           .includes(props.searchFilterValue.toString().toLowerCase().trim())
       );
