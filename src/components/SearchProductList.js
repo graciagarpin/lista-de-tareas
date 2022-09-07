@@ -1,10 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
 function SearchProductList(props) {
-  //   // la sugerencia no desaparece cuando se clica en ella, así que voy a hacer un classic className = hidden y a ver si funciona
-  //   // estaría bien saber hacer algún toggle o algo :S :D
-  // const [clicked, setClicked] = useState('')
-
   // productos mock para probar que funciona
   const products = [
     { productName: 'Tomate', productVariety: 'Cherry', id: 1 },
@@ -14,6 +10,24 @@ function SearchProductList(props) {
     { productName: 'Lechuga', productVariety: 'iceberg', id: 5 },
     { productName: 'Pepino', productVariety: 'Almería', id: 6 },
   ];
+
+  // he generado un mensaje de no hay coincidencias con lo que buscas tal. Para ello he consultaod la prueba final de react
+  const productSelectedIndex = products.findIndex((product) => {
+    let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
+    return (
+      product.productName
+        .toLowerCase()
+        .includes(props.searchFilterValue.toString().toLowerCase()) ||
+      product.productVariety
+        .toLowerCase()
+        .includes(props.searchFilterValue.toString().toLowerCase()) ||
+      nameAndVarietyProduct
+        .toLowerCase()
+        .includes(props.searchFilterValue.toString().toLowerCase().trim())
+    );
+  });
+
+  // console.log(productSelectedIndex);
 
   // console.log(props.searchFilterValue);
 
@@ -60,7 +74,21 @@ function SearchProductList(props) {
     );
   });
 
-  return <>{renderSuggestions}</>;
+  if (productSelectedIndex === -1) {
+    return (
+      // TODO botón a componente crear nuevo producto
+      <>
+        <p className='scene__warning'>
+          No hay ningún producto que coincida con:
+          <span className='scene__warning__italics'>
+            {''} "{props.searchFilterValue}"
+          </span>
+        </p>
+      </>
+    );
+  } else {
+    return <>{renderSuggestions}</>;
+  }
 }
 
 export default SearchProductList;
