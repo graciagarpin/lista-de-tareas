@@ -1,4 +1,10 @@
+import { useState } from 'react';
+
 function SearchProductList(props) {
+  //   // la sugerencia no desaparece cuando se clica en ella, así que voy a hacer un classic className = hidden y a ver si funciona
+  //   // estaría bien saber hacer algún toggle o algo :S :D
+  // const [clicked, setClicked] = useState('')
+
   // productos mock para probar que funciona
   const products = [
     { productName: 'Tomate', productVariety: 'Cherry', id: 1 },
@@ -11,10 +17,9 @@ function SearchProductList(props) {
 
   // console.log(props.searchFilterValue);
 
-  
   const filteredSuggestions = products.filter((product) => {
     let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
-    console.log(nameAndVarietyProduct);
+    // console.log(nameAndVarietyProduct);
     if (props.searchFilterValue === '') {
       return false;
     } else {
@@ -37,13 +42,15 @@ function SearchProductList(props) {
     // console.log(ev.target.innerHTML);
     const inputValue = ev.target.innerHTML;
     props.updateNameFilter(inputValue);
+    props.setClicked('hidden');
   };
+
   // console.log(filteredSuggestions);
 
   const renderSuggestions = filteredSuggestions.map((suggestion, index) => {
     return (
       <p
-        className="product-input suggestion"
+        className={`product-input suggestion ${props.clicked}`}
         key={index}
         onClick={handleSuggestionClick}
         value={suggestion.id}
