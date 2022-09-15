@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import '../../styles/NewProductForm.scss';
 
 function CreateNewProduct(props) {
+  // lo de siempre. Mensaje que se muestre que el producto se ha guardado correctamente cuando se clicka el botón guardar. Y que desaparezca cuando el user vuelve a hacer click en el input de texto o algo
+  const [msgProductSent, setMsgProductSent] = useState('hidden')
+
+  // variable para guardar el nombre escrito en el input
+  const [productNameForMsg, setProductNameForMsg] = useState('')
+
   const [categories, setCategories] = useState([
     {
       group: 'Grupo 1',
@@ -59,6 +65,10 @@ function CreateNewProduct(props) {
     });
   };
 
+  // función para asignar hidden o '' a msgProductSent en función de si se han rellenado los campos o no o algo así
+  
+
+
   // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
     const newValue = ev.target.value;
@@ -67,6 +77,14 @@ function CreateNewProduct(props) {
       ...productData,
       [property]: newValue,
     });
+
+    // console.log(ev.target.value);
+    // console.log(property);
+    if(ev.currentTarget.name === 'productName'){
+    setProductNameForMsg(newValue)
+    }
+
+    setMsgProductSent('hidden')
   };
 
   const handleFormSubmit = (ev) => {
@@ -84,7 +102,10 @@ function CreateNewProduct(props) {
     // props.addProduct(newProduct);
 
     resetInputValues();
+    setMsgProductSent('');
   };
+
+  // console.log(productNameForMsg);
 
   return (
     <>
@@ -122,6 +143,7 @@ function CreateNewProduct(props) {
         </select>
         <button className='add-product-btn'> Guardar </button>
       </form>
+      <p className={`${msgProductSent}`}>Se ha guardado "{productNameForMsg}" correctamente</p>
     </>
   );
 }
