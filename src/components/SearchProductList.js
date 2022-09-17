@@ -3,29 +3,19 @@
 function SearchProductList(props) {
   // productos mock para probar que funciona
   const products = [
-    { productName: 'Tomate', productVariety: 'Cherry', id: 1 },
-    { productName: 'tomate', productVariety: 'canario', id: 2 },
-    { productName: 'pepino', productVariety: 'holandés', id: 3 },
-    { productName: 'Ciruela', productVariety: 'Pequeña', id: 4 },
-    { productName: 'Lechuga', productVariety: 'iceberg', id: 5 },
-    { productName: 'Pepino', productVariety: 'Almería', id: 6 },
+    { productName: 'Tomate' },
+    { productName: 'tomate' },
+    { productName: 'pepino' },
+    { productName: 'Ciruela' },
+    { productName: 'Lechuga' },
+    { productName: 'Pepino' },
   ];
 
   // he generado un mensaje de no hay coincidencias con lo que buscas tal. Para ello he consultaod la prueba final de react
   const productSelectedIndex = products.findIndex((product) => {
-    // let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
-    return (
-      product.productName
-        .toLowerCase()
-        .includes(props.searchFilterValue.toString().toLowerCase()) 
-        // ||
-      // product.productVariety
-      //   .toLowerCase()
-      //   .includes(props.searchFilterValue.toString().toLowerCase()) ||
-      // nameAndVarietyProduct
-      //   .toLowerCase()
-      //   .includes(props.searchFilterValue.toString().toLowerCase().trim())
-    );
+    return product.productName
+      .toLowerCase()
+      .includes(props.searchFilterValue.toString().toLowerCase());
   });
 
   // console.log(productSelectedIndex);
@@ -33,23 +23,12 @@ function SearchProductList(props) {
   // console.log(props.searchFilterValue);
 
   const filteredSuggestions = products.filter((product) => {
-    // let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
-    // console.log(nameAndVarietyProduct);
     if (props.searchFilterValue === '') {
       return false;
     } else {
-      return (
-        product.productName
-          .toLowerCase()
-          .includes(props.searchFilterValue.toString().toLowerCase().trim()) 
-        //   ||
-        // product.productVariety
-        //   .toLowerCase()
-        //   .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
-        // nameAndVarietyProduct
-        //   .toLowerCase()
-        //   .includes(props.searchFilterValue.toString().toLowerCase().trim())
-      );
+      return product.productName
+        .toLowerCase()
+        .includes(props.searchFilterValue.toString().toLowerCase().trim());
     }
   });
 
@@ -71,8 +50,7 @@ function SearchProductList(props) {
         onClick={handleSuggestionClick}
         value={suggestion.id}
       >
-        {suggestion.productName} 
-        {/* {suggestion.productVariety} */}
+        {suggestion.productName}
       </p>
     );
   });
@@ -81,9 +59,9 @@ function SearchProductList(props) {
     return (
       // TODO botón a componente crear nuevo producto
       <>
-        <p className='scene__warning'>
+        <p className="scene__warning">
           No hay ningún producto que coincida con:
-          <span className='scene__warning__italics'>
+          <span className="scene__warning__italics">
             {''} "{props.searchFilterValue}"
           </span>
         </p>

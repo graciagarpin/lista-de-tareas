@@ -46,7 +46,6 @@ function CreateNewProduct(props) {
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productName: '',
-    // productVariety: '',
     productCategory: '',
   });
 
@@ -54,7 +53,6 @@ function CreateNewProduct(props) {
   const resetInputValues = () => {
     setProductData({
       productName: '',
-      // productVariety: '',
       productCategory: '',
     });
   };
@@ -89,38 +87,29 @@ function CreateNewProduct(props) {
   return (
     <>
       <h2>Crear producto nuevo</h2>
-      <form className='product-form' onSubmit={handleFormSubmit}>
+      <form className="product-form" onSubmit={handleFormSubmit}>
         <input
-          className='product-input'
-          type='data'
-          placeholder='Escribe un producto'
-          name='productName'
+          className="product-input"
+          type="data"
+          placeholder="Escribe un producto"
+          name="productName"
           onChange={handleInputChange}
           // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
           value={productData.productName}
         />
-        {/* <input
-          className='product-input'
-          type='data'
-          placeholder='Escribe la variedad'
-          name='productVariety'
-          onChange={handleInputChange}
-          value={productData.productVariety}
-        /> */}
-        {/* <label htmlFor='category'>Categoría:</label> */}
         <select
-          className='product-input'
-          name='productCategory'
-          id='productCategory'
+          className="product-input"
+          name="productCategory"
+          id="productCategory"
           onChange={handleInputChange}
           value={productData.productCategory}
         >
-          <option disabled value=''>
+          <option disabled value="">
             Categoría
           </option>
           {renderCategoriesOptions}
         </select>
-        <button className='add-product-btn'> Guardar </button>
+        <button className="add-product-btn"> Guardar </button>
       </form>
     </>
   );

@@ -5,8 +5,8 @@ import SearchProductList from './SearchProductList';
 
 function NewProductForm(props) {
   // TODO separar productName y productVariety
-  // new TODO: tener sólo productName y eliminar productVariety
-   
+  // new TODO: tener sólo productName y eliminar productVariety (done)
+
   // TODO ofrecer a la user botón de crear nuevo producto cuando no haya coincidencia
 
   // la sugerencia no desaparecía cuando se clicaba en ella, así que voy a he hecho un classic className = hidden y a ver si funciona.
@@ -39,7 +39,7 @@ function NewProductForm(props) {
     });
   }, [searchFilterValue]);
   console.log(searchFilterValue);
-  
+
   // función para guardar el valor de la sugerencia que ha tomado
   const updateNameFilter = (value) => {
     if (value !== '') {
@@ -93,21 +93,21 @@ function NewProductForm(props) {
 
   return (
     <>
-      <form className='product-form' onSubmit={handleFormSubmit}>
+      <form className="product-form" onSubmit={handleFormSubmit}>
         <input
-          className='product-input'
-          type='data'
-          placeholder='Escribe un producto'
-          name='productName'
+          className="product-input"
+          type="data"
+          placeholder="Escribe un producto"
+          name="productName"
           value={searchFilterValue}
           onChange={handleNameFilter}
         ></input>
 
         <input
-          className='product-input'
-          type='data'
-          placeholder='Unidades'
-          name='productUnits'
+          className="product-input"
+          type="data"
+          placeholder="Unidades"
+          name="productUnits"
           onChange={handleInputChange}
           value={productData.productUnits}
         />
@@ -127,7 +127,7 @@ function NewProductForm(props) {
         {renderMarketOptions}
 
       </select> */}
-        <button className='add-product-btn'> Añadir </button>
+        <button className="add-product-btn"> Añadir </button>
       </form>
       <div>
         <SearchProductList
