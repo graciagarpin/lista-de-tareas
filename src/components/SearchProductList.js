@@ -13,17 +13,18 @@ function SearchProductList(props) {
 
   // he generado un mensaje de no hay coincidencias con lo que buscas tal. Para ello he consultaod la prueba final de react
   const productSelectedIndex = products.findIndex((product) => {
-    let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
+    // let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
     return (
       product.productName
         .toLowerCase()
-        .includes(props.searchFilterValue.toString().toLowerCase()) ||
-      product.productVariety
-        .toLowerCase()
-        .includes(props.searchFilterValue.toString().toLowerCase()) ||
-      nameAndVarietyProduct
-        .toLowerCase()
-        .includes(props.searchFilterValue.toString().toLowerCase().trim())
+        .includes(props.searchFilterValue.toString().toLowerCase()) 
+        // ||
+      // product.productVariety
+      //   .toLowerCase()
+      //   .includes(props.searchFilterValue.toString().toLowerCase()) ||
+      // nameAndVarietyProduct
+      //   .toLowerCase()
+      //   .includes(props.searchFilterValue.toString().toLowerCase().trim())
     );
   });
 
@@ -32,7 +33,7 @@ function SearchProductList(props) {
   // console.log(props.searchFilterValue);
 
   const filteredSuggestions = products.filter((product) => {
-    let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
+    // let nameAndVarietyProduct = `${product.productName} ${product.productVariety}`;
     // console.log(nameAndVarietyProduct);
     if (props.searchFilterValue === '') {
       return false;
@@ -40,13 +41,14 @@ function SearchProductList(props) {
       return (
         product.productName
           .toLowerCase()
-          .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
-        product.productVariety
-          .toLowerCase()
-          .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
-        nameAndVarietyProduct
-          .toLowerCase()
-          .includes(props.searchFilterValue.toString().toLowerCase().trim())
+          .includes(props.searchFilterValue.toString().toLowerCase().trim()) 
+        //   ||
+        // product.productVariety
+        //   .toLowerCase()
+        //   .includes(props.searchFilterValue.toString().toLowerCase().trim()) ||
+        // nameAndVarietyProduct
+        //   .toLowerCase()
+        //   .includes(props.searchFilterValue.toString().toLowerCase().trim())
       );
     }
   });
@@ -69,7 +71,8 @@ function SearchProductList(props) {
         onClick={handleSuggestionClick}
         value={suggestion.id}
       >
-        {suggestion.productName} {suggestion.productVariety}
+        {suggestion.productName} 
+        {/* {suggestion.productVariety} */}
       </p>
     );
   });

@@ -5,6 +5,8 @@ import SearchProductList from './SearchProductList';
 
 function NewProductForm(props) {
   // TODO separar productName y productVariety
+  // new TODO: tener sólo productName y eliminar productVariety
+   
   // TODO ofrecer a la user botón de crear nuevo producto cuando no haya coincidencia
 
   // la sugerencia no desaparecía cuando se clicaba en ella, así que voy a he hecho un classic className = hidden y a ver si funciona.
@@ -18,7 +20,7 @@ function NewProductForm(props) {
     productUnits: '',
   });
 
-  // console.log(productData);
+  console.log(productData);
 
   // variable de estado global para recoger el valor del input
   const [searchFilterValue, setSearchFilterValue] = useState('');
@@ -36,7 +38,8 @@ function NewProductForm(props) {
       productName: searchFilterValue,
     });
   }, [searchFilterValue]);
-
+  console.log(searchFilterValue);
+  
   // función para guardar el valor de la sugerencia que ha tomado
   const updateNameFilter = (value) => {
     if (value !== '') {

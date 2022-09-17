@@ -46,7 +46,7 @@ function CreateNewProduct(props) {
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productName: '',
-    productVariety: '',
+    // productVariety: '',
     productCategory: '',
   });
 
@@ -54,7 +54,7 @@ function CreateNewProduct(props) {
   const resetInputValues = () => {
     setProductData({
       productName: '',
-      productVariety: '',
+      // productVariety: '',
       productCategory: '',
     });
   };
@@ -99,14 +99,14 @@ function CreateNewProduct(props) {
           // importantísimo y esta chica no lo tenía: controlamos el valor del input con las variables de estado. Lo mismo con "variety"
           value={productData.productName}
         />
-        <input
+        {/* <input
           className='product-input'
           type='data'
           placeholder='Escribe la variedad'
           name='productVariety'
           onChange={handleInputChange}
           value={productData.productVariety}
-        />
+        /> */}
         {/* <label htmlFor='category'>Categoría:</label> */}
         <select
           className='product-input'
