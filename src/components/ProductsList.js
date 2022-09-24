@@ -11,6 +11,9 @@ function ProductsList() {
   // Variable de estado que recoge el array de elementos con crossedOff = true
   const [crossedOffArray, setCrossedOffArray] = useState([]);
 
+  // Queremos que se muestre un mensaje que indique a la user que se ha guardado su compra correctamente.
+  const [shopCompletedMsg, setShopCompletedMsg] = useState('');
+
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
       product.productData.productName = product.productData.productName.trim();
@@ -60,6 +63,7 @@ function ProductsList() {
   const handleShopComplete = () => {
     addToCrossedOffArray();
     stillInShoppingList();
+    setShopCompletedMsg('¡Se ha guardado la compra correctamente!')
   };
 
   console.log(crossedOffArray);
@@ -80,6 +84,7 @@ function ProductsList() {
         ))}
       </div>
       <button onClick={handleShopComplete}>Compra hecha</button>
+      <p>{shopCompletedMsg}</p>
     </>
   );
 }
