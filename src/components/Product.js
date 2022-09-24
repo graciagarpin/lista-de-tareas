@@ -14,7 +14,7 @@ function Product({ id, productData, crossedOff, markProduct, deleteProduct }) {
       }
     >
       <div className='product-productName' onClick={() => markProduct(id)}>
-        {productData.productName} {productData.productVariety}
+        {productData.productName} 
       </div>
       <p> {isInputEmpty(productData.productUnits, 'uds.')}</p>
 
