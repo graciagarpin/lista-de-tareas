@@ -4,14 +4,12 @@ import '../styles/ProductsList.scss';
 import Product from './Product';
 
 function ProductsList() {
-
   const [products, setProducts] = useState([]);
-  console.log(products);
+  // console.log(products);
 
-  // Queremos que al clickar al botón se guarden en un array los elementos cuyo atributo crossedOff sea true y que se muestren en consola. 
+  // Queremos que al clickar al botón se guarden en un array los elementos cuyo atributo crossedOff sea true y que se muestren en consola.
   // Variable de estado que recoge el array de elementos con crossedOff = true
-  const [crossedOffArray, steCrossedOffArray] = useState([])
-
+  const [crossedOffArray, setCrossedOffArray] = useState([]);
 
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
@@ -35,21 +33,34 @@ function ProductsList() {
     });
 
     setProducts(updatedProducts);
-
-
   };
 
   // función que filtra los elementos del array productos y guarda los que cumplen la condición product.crossedOff === true
-  
+
   // TODO warning?
   const addToCrossedOffArray = () => {
     const crossedOffProducts = products.filter((product) => {
-      if(product.crossedOff === true){
-        return true
+      if (product.crossedOff === true) {
+        return true;
       }
-    })
-    steCrossedOffArray(crossedOffProducts)
-  }
+    });
+    setCrossedOffArray(crossedOffProducts);
+  };
+
+  // Queremos que se eliminen de la lista de productos para que solo se muestren los que no han sido comprados ( crossedOff false ).
+  const stillInShoppingList = () => {
+    const notCrossedOffProducts = products.filter((product) => {
+      if (product.crossedOff === false) {
+        return true;
+      }
+    });
+    setProducts(notCrossedOffProducts);
+  };
+
+  const handleShopComplete = () => {
+    addToCrossedOffArray();
+    stillInShoppingList();
+  };
 
   console.log(crossedOffArray);
   return (
@@ -68,7 +79,7 @@ function ProductsList() {
           />
         ))}
       </div>
-      <button onClick={addToCrossedOffArray} >Compra hecha</button>
+      <button onClick={handleShopComplete}>Compra hecha</button>
     </>
   );
 }
