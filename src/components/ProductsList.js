@@ -3,13 +3,15 @@ import NewProductForm from './NewProductForm';
 import '../styles/ProductsList.scss';
 import Product from './Product';
 
-
-
 function ProductsList() {
 
   const [products, setProducts] = useState([]);
+  console.log(products);
 
-  
+  // Queremos que al clickar al botón se guarden en un array los elementos cuyo atributo crossedOff sea true y que se muestren en consola. 
+  // Variable de estado que recoge el array de elementos con crossedOff = true
+  const [crossedOffArray, steCrossedOffArray] = useState([])
+
 
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
@@ -31,9 +33,25 @@ function ProductsList() {
       }
       return product;
     });
+
     setProducts(updatedProducts);
+
+
   };
 
+  // función que filtra los elementos del array productos y guarda los que cumplen la condición product.crossedOff === true
+  
+  // TODO warning?
+  const addToCrossedOffArray = () => {
+    const crossedOffProducts = products.filter((product) => {
+      if(product.crossedOff === true){
+        return true
+      }
+    })
+    steCrossedOffArray(crossedOffProducts)
+  }
+
+  console.log(crossedOffArray);
   return (
     <>
       <NewProductForm addProduct={addProduct} />
@@ -50,6 +68,7 @@ function ProductsList() {
           />
         ))}
       </div>
+      <button onClick={addToCrossedOffArray} >Compra hecha</button>
     </>
   );
 }
