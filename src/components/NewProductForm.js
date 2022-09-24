@@ -20,7 +20,7 @@ function NewProductForm(props) {
     productUnits: '',
   });
 
-  console.log(productData);
+  // console.log(productData);
 
   // variable de estado global para recoger el valor del input
   const [searchFilterValue, setSearchFilterValue] = useState('');
@@ -38,7 +38,7 @@ function NewProductForm(props) {
       productName: searchFilterValue,
     });
   }, [searchFilterValue]);
-  console.log(searchFilterValue);
+  // console.log(searchFilterValue);
 
   // función para guardar el valor de la sugerencia que ha tomado
   const updateNameFilter = (value) => {
@@ -73,7 +73,9 @@ function NewProductForm(props) {
       crossedOff: false,
     };
     props.addProduct(newProduct);
+    console.log('Enviando Producto a la Lista');
     console.log(newProduct);
+
     resetInputValues();
   };
 

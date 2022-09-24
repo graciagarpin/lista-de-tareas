@@ -4,8 +4,6 @@ function SearchProductList(props) {
   // productos mock para probar que funciona
   const products = [
     { productName: 'Tomate' },
-    { productName: 'tomate' },
-    { productName: 'pepino' },
     { productName: 'Ciruela' },
     { productName: 'Lechuga' },
     { productName: 'Pepino' },

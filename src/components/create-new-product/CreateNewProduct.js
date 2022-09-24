@@ -87,7 +87,7 @@ function CreateNewProduct(props) {
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
-    console.log('Enviando...');
+    console.log('Enviando Nuevo Producto');
     console.log(productData);
 
     // TODO Aquí vendría una función por props como esto: props.addProduct(newProduct) pero que envíe la info a la BBDD
