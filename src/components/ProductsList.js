@@ -39,27 +39,28 @@ function ProductsList() {
   };
 
   // función que filtra los elementos del array productos y guarda los que cumplen la condición product.crossedOff === true
-
   // TODO warning?
   const addToCrossedOffArray = () => {
     const crossedOffProducts = products.filter((product) => {
       if (product.crossedOff === true) {
         return true;
-      }
+      } 
     });
     setCrossedOffArray(crossedOffProducts);
   };
 
   // Queremos que se eliminen de la lista de productos para que solo se muestren los que no han sido comprados ( crossedOff false ).
+    // TODO warning?
   const stillInShoppingList = () => {
     const notCrossedOffProducts = products.filter((product) => {
       if (product.crossedOff === false) {
         return true;
-      }
+      } 
     });
     setProducts(notCrossedOffProducts);
   };
 
+  // TODO fusionar en una sola las dos funciones addToCrossedOffArray() y stillInShoppingList() para que en if === true haga una cosa else (=== false) haga otra cosa. Quizá push?? 
   const handleShopComplete = () => {
     addToCrossedOffArray();
     stillInShoppingList();
