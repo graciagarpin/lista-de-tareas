@@ -83,7 +83,7 @@ function ProductsList() {
           />
         ))}
       </div>
-      <button onClick={handleShopComplete}>Compra hecha</button>
+      <button className="add-product-btn" onClick={handleShopComplete}>Compra hecha</button>
       <p>{shopCompletedMsg}</p>
     </>
   );
