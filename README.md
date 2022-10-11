@@ -9,4 +9,4 @@ Botón compra hecha:
 
 [x] Queremos que se muestre un mensaje que indique a la user que se ha guardado su compra correctamente.
 
-Queremos que se muestre el botón a partir de que haya un elemento tachado crossedOff 
+[x] Queremos que se muestre el botón a partir de que haya un elemento tachado crossedOff 

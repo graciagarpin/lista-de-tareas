@@ -73,8 +73,8 @@ function NewProductForm(props) {
       crossedOff: false,
     };
     props.addProduct(newProduct);
-    console.log('Enviando Producto a la Lista');
-    console.log(newProduct);
+    // console.log('Enviando Producto a la Lista');
+    // console.log(newProduct);
 
     resetInputValues();
   };
