@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewProductForm from './NewProductForm';
 import '../styles/ProductsList.scss';
 import Product from './Product';
@@ -13,6 +13,27 @@ function ProductsList() {
 
   // Queremos que se muestre un mensaje que indique a la user que se ha guardado su compra correctamente.
   const [shopCompletedMsg, setShopCompletedMsg] = useState('');
+
+  // Queremos que se muestre el botón a partir de que haya un elemento tachado crossedOff 
+  const [showButton, setShowButton] = useState('hidden');
+
+  // compruebo con findIndex si hay algún elemento tachado
+  const indexProductCrossed = products.findIndex((product) => product.crossedOff ===  true);
+
+  console.log("indexProductCrossed " + indexProductCrossed);
+
+  // vuelvo a tener problema con la sincronía (creo) voy a probar a meter un useEffect
+  // useEffect para que cada vez que la variable indexProductCrossed se actualice, nos guarde el valor en showButton
+  useEffect (() => {
+    if (indexProductCrossed !== -1){
+      console.log('me muestro');
+      setShowButton('')
+    } else {
+      console.log('estoy hidden');
+      setShowButton('hidden')
+    }
+    }, [indexProductCrossed])
+
 
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
@@ -67,7 +88,7 @@ function ProductsList() {
     setShopCompletedMsg('¡Se ha guardado la compra correctamente!')
   };
 
-  console.log(crossedOffArray);
+  // console.log(crossedOffArray);
   return (
     <>
       <NewProductForm addProduct={addProduct} />
@@ -81,10 +102,13 @@ function ProductsList() {
             crossedOff={product.crossedOff}
             deleteProduct={deleteProduct}
             markProduct={markProduct}
+            // paso la función para que se ejecute al clicar el elemento
+            // makeButtonShow={makeButtonShow}
+            // onClick={makeButtonShow}
           />
         ))}
       </div>
-      <button className="add-product-btn" onClick={handleShopComplete}>Compra hecha</button>
+      <button className={`add-product-btn ${showButton}`} onClick={handleShopComplete}>Compra hecha</button>
       <p>{shopCompletedMsg}</p>
     </>
   );
