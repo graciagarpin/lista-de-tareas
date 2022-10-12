@@ -4,10 +4,10 @@ import '../../styles/NewProductForm.scss';
 
 function CreateNewProduct(props) {
   // lo de siempre. Mensaje que se muestre que el producto se ha guardado correctamente cuando se clicka el botón guardar. Y que desaparezca cuando el user vuelve a hacer click en el input de texto o algo
-  const [msgProductSent, setMsgProductSent] = useState('hidden')
+  const [msgProductSent, setMsgProductSent] = useState('hidden');
 
   // variable para guardar el nombre escrito en el input
-  const [productNameForMsg, setProductNameForMsg] = useState('')
+  const [productNameForMsg, setProductNameForMsg] = useState('');
 
   const [categories, setCategories] = useState([
     {
@@ -64,8 +64,6 @@ function CreateNewProduct(props) {
   };
 
   // función para asignar hidden o '' a msgProductSent en función de si se han rellenado los campos o no o algo así
-  
-
 
   // módulo 3 día 3. controlar inputs con react.
   const handleInputChange = (ev) => {
@@ -78,17 +76,25 @@ function CreateNewProduct(props) {
 
     // console.log(ev.target.value);
     // console.log(property);
-    if(ev.currentTarget.name === 'productName'){
-    setProductNameForMsg(newValue)
+    if (ev.currentTarget.name === 'productName') {
+      setProductNameForMsg(newValue);
     }
 
-    setMsgProductSent('hidden')
+    setMsgProductSent('hidden');
   };
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
     console.log('Enviando Nuevo Producto');
     console.log(productData);
+
+    fetch('https://eoc161t34ip605c.m.pipedream.net', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    });
 
     // TODO Aquí vendría una función por props como esto: props.addProduct(newProduct) pero que envíe la info a la BBDD
 
@@ -132,7 +138,9 @@ function CreateNewProduct(props) {
         </select>
         <button className="add-product-btn"> Guardar </button>
       </form>
-      <p className={`${msgProductSent}`}>Se ha guardado "{productNameForMsg}" correctamente</p>
+      <p className={`${msgProductSent}`}>
+        Se ha guardado "{productNameForMsg}" correctamente
+      </p>
     </>
   );
 }
