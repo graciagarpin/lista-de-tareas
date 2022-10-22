@@ -1,3 +1,8 @@
+- Crear producto nuevo:
+
+[ ] Permitir eliminar el mensaje de "se ha creado el producto correctamente" o hacerlo desaparecer al tiempo.
+
+
 - Lista de la compra:
 
     o Cantidad de producto (numero de unidades):
@@ -16,3 +21,6 @@
 [x] Queremos que se muestre el botón a partir de que haya un elemento tachado crossedOff 
 
 [ ] Permitir añadir sólo los productos creados previamente.
+
+[ ] Crear modal con input select para elegir en qué super se ha hecho la compra
+
