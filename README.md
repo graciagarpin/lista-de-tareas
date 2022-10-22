@@ -22,5 +22,9 @@
 
 [ ] Permitir añadir sólo los productos creados previamente.
 
+  - Ir filtrando y comprobando que tanto el valor introducido por la user como la sugerencia clickada está en el array mock de verduras (que simula lo que nos vendrá del back)
+  - disabled="disabled" en el botón (variable de estado que se actualice tal)
+
+
 [ ] Crear modal con input select para elegir en qué super se ha hecho la compra
 

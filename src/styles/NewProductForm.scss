@@ -33,3 +33,8 @@
   padding-bottom: 3px;
   margin-bottom: 3px;
 }
+
+.disabled{
+  cursor:not-allowed;
+  opacity: 50%;
+}

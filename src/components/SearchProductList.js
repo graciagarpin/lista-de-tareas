@@ -1,5 +1,7 @@
 // import { useState } from 'react';
 
+import { useEffect } from 'react';
+
 function SearchProductList(props) {
   // productos mock para probar que funciona
   const products = [
@@ -38,7 +40,17 @@ function SearchProductList(props) {
     props.setClicked('hidden');
   };
 
-  // console.log(filteredSuggestions);
+  // console.log("Desde Search " + filteredSuggestions.length);
+
+  // props.filteredSuggestionsLengthCheck(filteredSuggestions.length)
+
+  useEffect( () => {
+    props.filteredSuggestionsLengthCheck(filteredSuggestions.length)
+  },[filteredSuggestions, props]) 
+
+  // const sendFilteredSuggestionsLength = () => {
+
+  // }
 
   const renderSuggestions = filteredSuggestions.map((suggestion, index) => {
     return (
@@ -47,6 +59,7 @@ function SearchProductList(props) {
         key={index}
         onClick={handleSuggestionClick}
         value={suggestion.id}
+
       >
         {suggestion.productName}
       </p>

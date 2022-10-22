@@ -14,13 +14,18 @@ function NewProductForm(props) {
   // estaría bien saber hacer algún toggle o algo :S :D
   const [clicked, setClicked] = useState('');
 
+  // variable de estado para configurar el botón añadir como inhabilitado (disabled) 
+
+  const [buttonDisabled, setButtonDisabled] = useState('');
+
+
   // variable de estado global para recoger toda la info sobre el producto
   const [productData, setProductData] = useState({
     productName: '',
     productUnits: '',
   });
 
-  // console.log(productData);
+  // console.log("productData" + productData);
 
   // variable de estado global para recoger el valor del input
   const [searchFilterValue, setSearchFilterValue] = useState('');
@@ -29,6 +34,8 @@ function NewProductForm(props) {
   const handleNameFilter = (ev) => {
     setSearchFilterValue(ev.target.value);
     setClicked('');
+
+    filteredSuggestionsLengthCheck();
   };
 
   // useEffect para que cada vez que la variable de estado se actualice, nos guarde el valor en productData
@@ -38,7 +45,25 @@ function NewProductForm(props) {
       productName: searchFilterValue,
     });
   }, [searchFilterValue]);
-  // console.log(searchFilterValue);
+
+  // console.log("searchFilterValue " + searchFilterValue);
+
+  // Permitir añadir sólo los productos creados previamente.
+  // Voy a intentar hacer una función que tome el valor del mock-array y lo filtre con el de searchfiltervalue y nos devuelva algo para saber si se encuentra ahí o no :S:S:S
+  // me da la sensación que podría hacer esta comparación en el otro componente y envíar directamente el resultado de la comparación
+  // Resulta que ya tengo algo así hecho en el otro componente, oleee
+  // se llama así pero comprueba el valor Y actualiza la condición de inhabilitado del botón :S
+  const filteredSuggestionsLengthCheck = (value) => {
+    if (value === 0) {
+      setButtonDisabled('disabled')
+    } else {
+      setButtonDisabled('')
+    }
+    return console.log(value);
+  };
+
+  // filteredSuggestionsLengthCheck()
+  // console.log("Desde NewPro " + filteredSuggestionsLengthCheck());
 
   // función para guardar el valor de la sugerencia que ha tomado
   const updateNameFilter = (value) => {
@@ -74,7 +99,7 @@ function NewProductForm(props) {
     };
     props.addProduct(newProduct);
     // console.log('Enviando Producto a la Lista');
-    // console.log(newProduct);
+    console.log('newProduct' + newProduct);
 
     resetInputValues();
   };
@@ -95,21 +120,21 @@ function NewProductForm(props) {
 
   return (
     <>
-      <form className="product-form" onSubmit={handleFormSubmit}>
+      <form className='product-form' onSubmit={handleFormSubmit}>
         <input
-          className="product-input"
-          type="data"
-          placeholder="Escribe un producto"
-          name="productName"
+          className='product-input'
+          type='data'
+          placeholder='Escribe un producto'
+          name='productName'
           value={searchFilterValue}
           onChange={handleNameFilter}
         ></input>
 
         <input
-          className="product-input"
-          type="data"
-          placeholder="Unidades"
-          name="productUnits"
+          className='product-input'
+          type='data'
+          placeholder='Unidades'
+          name='productUnits'
           onChange={handleInputChange}
           value={productData.productUnits}
         />
@@ -129,7 +154,7 @@ function NewProductForm(props) {
         {renderMarketOptions}
 
       </select> */}
-        <button className="add-product-btn"> Añadir </button>
+        <button className={`add-product-btn ${buttonDisabled}`} disabled={buttonDisabled}  > Añadir </button>
       </form>
       <div>
         <SearchProductList
@@ -137,6 +162,8 @@ function NewProductForm(props) {
           updateNameFilter={updateNameFilter}
           setClicked={setClicked}
           clicked={clicked}
+          // paso la función para llamarla desde el otro componente y pasarle el valor necesario en este componente
+          filteredSuggestionsLengthCheck={filteredSuggestionsLengthCheck}
         />
       </div>
     </>
