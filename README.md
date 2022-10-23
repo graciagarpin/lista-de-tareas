@@ -1,6 +1,6 @@
 - Crear producto nuevo:
 
-[ ] Permitir eliminar el mensaje de "se ha creado el producto correctamente" o hacerlo desaparecer al tiempo.
+[x] Permitir eliminar el mensaje de "se ha creado el producto correctamente" o hacerlo desaparecer al tiempo.
 
 
 - Lista de la compra:
