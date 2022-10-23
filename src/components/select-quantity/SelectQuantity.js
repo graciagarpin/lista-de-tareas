@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import ButtonIncrement from './ButtonIncrement';
+import DisplayQuantity from './DisplayQuantity';
+import ButtonDecrement from './ButtonDecrement';
 
 function SelectQuantity () {
   const [counter, setCounter] = useState(1);
@@ -9,9 +12,11 @@ function SelectQuantity () {
   }
   return (
     <div> 
-      <ButtonIncrement onClickFunc={incrementCounter}/>
-      <DisplayQuantity message={counter}/> 
       <ButtonDecrement onClickFunc={decrementCounter}/>
+      <DisplayQuantity message={counter}/> 
+      <ButtonIncrement onClickFunc={incrementCounter}/>
     </div>
   );
 }
+
+export default SelectQuantity;

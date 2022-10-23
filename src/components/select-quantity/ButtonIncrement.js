@@ -6,3 +6,5 @@ function ButtonIncrement(props) {
     </button>
   )
 }
+
+export default ButtonIncrement;
