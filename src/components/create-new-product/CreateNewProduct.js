@@ -138,7 +138,7 @@ function CreateNewProduct(props) {
         </select>
         <button className="add-product-btn"> Guardar </button>
       </form>
-      <p className={`${msgProductSent}`}>
+      <p className={` animatedText ${msgProductSent}`}>
         Se ha guardado "{productNameForMsg}" correctamente
       </p>
     </>
