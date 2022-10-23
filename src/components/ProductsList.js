@@ -109,7 +109,7 @@ function ProductsList() {
         ))}
       </div>
       <button className={`add-product-btn ${showButton}`} onClick={handleShopComplete}>Compra hecha</button>
-      <p>{shopCompletedMsg}</p>
+      <p className='animatedText'>{shopCompletedMsg}</p>
     </>
   );
 }
