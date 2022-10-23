@@ -35,7 +35,7 @@ function NewProductForm(props) {
     setSearchFilterValue(ev.target.value);
     setClicked('');
 
-    filteredSuggestionsLengthCheck();
+    filteredSuggestionsMatch();
   };
 
   // useEffect para que cada vez que la variable de estado se actualice, nos guarde el valor en productData
@@ -53,13 +53,13 @@ function NewProductForm(props) {
   // me da la sensación que podría hacer esta comparación en el otro componente y envíar directamente el resultado de la comparación
   // Resulta que ya tengo algo así hecho en el otro componente, oleee
   // se llama así pero comprueba el valor Y actualiza la condición de inhabilitado del botón :S
-  const filteredSuggestionsLengthCheck = (value) => {
-    if (value === 0) {
+  const filteredSuggestionsMatch = (value) => {
+    if (value === -1) {
       setButtonDisabled('disabled')
     } else {
       setButtonDisabled('')
     }
-    return console.log(value);
+    // return console.log(value);
   };
 
   // filteredSuggestionsLengthCheck()
@@ -163,7 +163,7 @@ function NewProductForm(props) {
           setClicked={setClicked}
           clicked={clicked}
           // paso la función para llamarla desde el otro componente y pasarle el valor necesario en este componente
-          filteredSuggestionsLengthCheck={filteredSuggestionsLengthCheck}
+          filteredSuggestionsMatch={filteredSuggestionsMatch}
         />
       </div>
     </>

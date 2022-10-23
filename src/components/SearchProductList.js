@@ -6,6 +6,7 @@ function SearchProductList(props) {
   // productos mock para probar que funciona
   const products = [
     { productName: 'Tomate' },
+    { productName: 'Tomate Cherry' },
     { productName: 'Ciruela' },
     { productName: 'Lechuga' },
     { productName: 'Pepino' },
@@ -32,6 +33,14 @@ function SearchProductList(props) {
     }
   });
 
+  // que la palabra esté literalmente todas las letras. Que no me deje añadir tom, que sea obligatorio introducir tomate (a excepción de las mayus yoksé)
+
+  // console.log("index de algo " + products.indexOf((product) => product.productName === "Tomate"));
+  const isInProductsArray = products.findIndex((product) => product.productName.toLowerCase() === props.searchFilterValue.toLowerCase());
+
+  console.log("Número índice palabra exacta " + isInProductsArray);
+  console.log("Contenido del input " + props.searchFilterValue);
+
   // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué
   const handleSuggestionClick = (ev) => {
     // console.log(ev.target.innerHTML);
@@ -42,11 +51,11 @@ function SearchProductList(props) {
 
   // console.log("Desde Search " + filteredSuggestions.length);
 
-  // props.filteredSuggestionsLengthCheck(filteredSuggestions.length)
+  // props.filteredSuggestionsMatch(filteredSuggestions.length)
 
-  useEffect( () => {
-    props.filteredSuggestionsLengthCheck(filteredSuggestions.length)
-  },[filteredSuggestions, props]) 
+  useEffect(() => {
+    props.filteredSuggestionsMatch(isInProductsArray);
+  }, [isInProductsArray, props]);
 
   // const sendFilteredSuggestionsLength = () => {
 
@@ -59,7 +68,6 @@ function SearchProductList(props) {
         key={index}
         onClick={handleSuggestionClick}
         value={suggestion.id}
-
       >
         {suggestion.productName}
       </p>
@@ -70,9 +78,9 @@ function SearchProductList(props) {
     return (
       // TODO botón a componente crear nuevo producto
       <>
-        <p className="scene__warning">
+        <p className='scene__warning'>
           No hay ningún producto que coincida con:
-          <span className="scene__warning__italics">
+          <span className='scene__warning__italics'>
             {''} "{props.searchFilterValue}"
           </span>
         </p>

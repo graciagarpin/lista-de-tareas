@@ -20,16 +20,16 @@ function ProductsList() {
   // compruebo con findIndex si hay algún elemento tachado
   const indexProductCrossed = products.findIndex((product) => product.crossedOff ===  true);
 
-  console.log("indexProductCrossed " + indexProductCrossed);
+  // console.log("indexProductCrossed " + indexProductCrossed);
 
   // vuelvo a tener problema con la sincronía (creo) voy a probar a meter un useEffect
   // useEffect para que cada vez que la variable indexProductCrossed se actualice, nos guarde el valor en showButton
   useEffect (() => {
     if (indexProductCrossed !== -1){
-      console.log('me muestro');
+      // console.log('me muestro');
       setShowButton('')
     } else {
-      console.log('estoy hidden');
+      // console.log('estoy hidden');
       setShowButton('hidden')
     }
     }, [indexProductCrossed])
