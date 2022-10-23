@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/NewProductForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 import SearchProductList from './SearchProductList';
+import SelectQuantity from './select-quantity/SelectQuantity';
 
 function NewProductForm(props) {
   // TODO separar productName y productVariety
@@ -138,6 +139,8 @@ function NewProductForm(props) {
           onChange={handleInputChange}
           value={productData.productUnits}
         />
+
+        <SelectQuantity/>
 
         {/* TODO reutilizar input de tiendas más tarde */}
 

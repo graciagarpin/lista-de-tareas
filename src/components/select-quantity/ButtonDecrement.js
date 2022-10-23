@@ -6,3 +6,5 @@ function ButtonDecrement(props) {
     </button>
   )
 }
+
+export default ButtonDecrement;
