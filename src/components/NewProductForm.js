@@ -152,6 +152,8 @@ function NewProductForm(props) {
 
         <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/>
 
+        <SelectQuantity/>
+
         {/* TODO reutilizar input de tiendas más tarde */}
 
         {/* <label htmlFor='supermarket'>Tienda:</label>
