@@ -11,14 +11,14 @@ function ProductsList() {
   // Variable de estado que recoge el array de elementos con crossedOff = true
   const [crossedOffArray, setCrossedOffArray] = useState([]);
 
-  // Queremos que se muestre un mensaje que indique a la user que se ha guardado su compra correctamente.
-  const [shopCompletedMsg, setShopCompletedMsg] = useState('');
-
   // Queremos que se muestre el botón a partir de que haya un elemento tachado crossedOff 
   const [showButton, setShowButton] = useState('hidden');
 
   // compruebo con findIndex si hay algún elemento tachado
   const indexProductCrossed = products.findIndex((product) => product.crossedOff ===  true);
+
+  // quiero que se muestre el mensaje cuando se active el botón de guardar compra
+  const [msgShopSent, setMsgShopSent] = useState('hidden');
 
   // console.log("indexProductCrossed " + indexProductCrossed);
 
@@ -85,7 +85,9 @@ function ProductsList() {
   const handleShopComplete = () => {
     addToCrossedOffArray();
     stillInShoppingList();
-    setShopCompletedMsg('¡Se ha guardado la compra correctamente!')
+    setMsgShopSent('');
+
+    console.log("Hola, sucedo?");
   };
 
   // console.log(crossedOffArray);
@@ -109,7 +111,8 @@ function ProductsList() {
         ))}
       </div>
       <button className={`add-product-btn ${showButton}`} onClick={handleShopComplete}>Compra hecha</button>
-      <p className='animatedText'>{shopCompletedMsg}</p>
+      <p className={` animatedText ${msgShopSent}`}>¡Se ha guardado la compra correctamente!</p>
+
     </>
   );
 }
