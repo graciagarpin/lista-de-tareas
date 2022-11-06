@@ -38,8 +38,8 @@ function SearchProductList(props) {
   // console.log("index de algo " + products.indexOf((product) => product.productName === "Tomate"));
   const isInProductsArray = products.findIndex((product) => product.productName.toLowerCase() === props.searchFilterValue.toLowerCase());
 
-  console.log("Número índice palabra exacta " + isInProductsArray);
-  console.log("Contenido del input " + props.searchFilterValue);
+  // console.log("Número índice palabra exacta " + isInProductsArray);
+  // console.log("Contenido del input " + props.searchFilterValue);
 
   // puedo sacar el nombre y variedad juntos pero no sé como separarlo para que el back sepa qué es qué
   const handleSuggestionClick = (ev) => {

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import NewProductForm from './NewProductForm';
 import '../styles/ProductsList.scss';
 import Product from './Product';
+import SelectWhatShop from './select-what-shop/SelectWhatShop';
+
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -112,6 +114,13 @@ function ProductsList() {
       </div>
       <button className={`add-product-btn ${showButton}`} onClick={handleShopComplete}>Compra hecha</button>
       <p className={` animatedText ${msgShopSent}`}>¡Se ha guardado la compra correctamente!</p>
+
+      {/* TODO comentado pero lo usaremos en el futuro. Esq ahora me molesta un poco */}
+      {/* <div className={`principal-shopping-list ${msgShopSent}`} > */}
+      <div className={`principal-shopping-list`} >
+
+        <SelectWhatShop />
+      </div>
 
     </>
   );

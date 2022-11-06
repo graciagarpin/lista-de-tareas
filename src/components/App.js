@@ -14,6 +14,7 @@ function App() {
         <h2>Lista de la Compra</h2>
         <ProductsList />
       </div>
+
     </>
   );
 }
