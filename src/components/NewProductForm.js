@@ -74,14 +74,15 @@ function NewProductForm(props) {
   };
 
   // módulo 3 día 3. controlar inputs con react.
-  const handleInputChange = (ev) => {
-    const newValue = ev.target.value;
-    const property = ev.currentTarget.name;
-    setProductData({
-      ...productData,
-      [property]: newValue,
-    });
-  };
+  // comentado porque no se usa:
+  // const handleInputChange = (ev) => {
+  //   const newValue = ev.target.value;
+  //   const property = ev.currentTarget.name;
+  //   setProductData({
+  //     ...productData,
+  //     [property]: newValue,
+  //   });
+  // };
 
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
@@ -131,16 +132,17 @@ function NewProductForm(props) {
           onChange={handleNameFilter}
         ></input>
 
-        <input
-          className='product-input'
-          type='data'
-          placeholder='Unidades'
-          name='productUnits'
+        {/* comentado porque no se usa: */}
+        {/* <input
+          className="product-input"
+          type="data"
+          placeholder="Unidades"
+          name="productUnits"
           onChange={handleInputChange}
           value={productData.productUnits}
-        />
+        /> */}
 
-        <SelectQuantity/>
+        <SelectQuantity />
 
         {/* TODO reutilizar input de tiendas más tarde */}
 
