@@ -152,7 +152,7 @@ function NewProductForm(props) {
 
         <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/>
 
-        <SelectQuantity/>
+        <SelectQuantity />
 
         {/* TODO reutilizar input de tiendas más tarde */}
 
