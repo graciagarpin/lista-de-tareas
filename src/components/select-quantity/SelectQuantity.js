@@ -10,9 +10,9 @@ function SelectQuantity(props) {
   if (counter <= 1) {
     decrementCounter = () => setCounter(1);
   }
-  useEffect(() => {
-    props.handleSelectUnitsChange(counter);
-  }, [counter]);
+  // useEffect(() => {
+  //   props.handleSelectUnitsChange(counter);
+  // }, [counter]);
   return (
     <div>
       <ButtonDecrement onClickFunc={decrementCounter} />

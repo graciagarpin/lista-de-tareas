@@ -150,7 +150,7 @@ function NewProductForm(props) {
           value={productData.productUnits}
         /> */}
 
-        <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/>
+        {/* <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/> */}
 
         <SelectQuantity />
 
