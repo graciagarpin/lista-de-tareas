@@ -1,7 +1,7 @@
 function ButtonIncrement(props) {
   
   return (
-    <button style={{ marginLeft: '.5rem'}} onClick={props.onClickFunc}>
+    <button style={{ marginLeft: '.5rem'}} onClick={props.incrementCounter}>
     +1
     </button>
   )

@@ -39,6 +39,7 @@ function ProductsList() {
 
   const addProduct = (product) => {
     if (product.productData.productName.trim()) {
+      console.log("Soy addProduct");
       product.productData.productName = product.productData.productName.trim();
       const updatedProducts = [product, ...products];
       setProducts(updatedProducts);

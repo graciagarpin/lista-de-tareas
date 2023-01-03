@@ -15,9 +15,12 @@ function SelectQuantity(props) {
   // }, [counter]);
   return (
     <div>
-      <ButtonDecrement onClickFunc={decrementCounter} />
+      {/* como estaba:
+      <ButtonDecrement onClickFunc={decrementCounter} /> */}
+
+      <ButtonDecrement decrementCounter={decrementCounter} />
       <DisplayQuantity counter={counter} />
-      <ButtonIncrement onClickFunc={incrementCounter} />
+      <ButtonIncrement incrementCounter={incrementCounter} />
     </div>
   );
 }

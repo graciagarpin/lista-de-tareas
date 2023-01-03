@@ -130,7 +130,7 @@ function NewProductForm(props) {
 
   return (
     <>
-      <form className='product-form' onSubmit={handleFormSubmit}>
+      <form className='product-form'>
         <input
           className='product-input'
           type='data'
@@ -169,7 +169,11 @@ function NewProductForm(props) {
         {renderMarketOptions}
 
       </select> */}
-        <button className={`add-product-btn ${buttonDisabled}`} disabled={buttonDisabled}  > Añadir </button>
+        <button 
+        className={`add-product-btn ${buttonDisabled}`} 
+        disabled={buttonDisabled} 
+        onClick={handleFormSubmit}
+        > Añadir </button>
       </form>
       <div>
         <SearchProductList

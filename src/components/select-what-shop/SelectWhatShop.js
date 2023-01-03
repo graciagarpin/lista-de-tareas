@@ -14,7 +14,7 @@ function SelectWhatShop(props) {
   ]);
 
   const [marketSelected, setMarketSelected] = useState("");
-  console.log(marketSelected);
+  // console.log(marketSelected);
 
   const renderMarketOptions = markets.sort().map((market, index) => {
     return <option value={market} key={index}>{market}</option>
