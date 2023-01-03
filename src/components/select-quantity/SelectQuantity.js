@@ -4,23 +4,23 @@ import DisplayQuantity from './DisplayQuantity';
 import ButtonDecrement from './ButtonDecrement';
 
 function SelectQuantity(props) {
-  const [counter, setCounter] = useState(1);
+  // const [counter, setCounter] = useState(1);
+
   let incrementCounter = (ev) => {
-    
     ev.preventDefault();
-    setCounter(counter + 1);
+    props.setCounter(props.counter + 1);
   };
   let decrementCounter = (ev) => {
     ev.preventDefault();
-    setCounter(counter - 1);
+    props.setCounter(props.counter - 1);
   };
-  if (counter <= 1) {
-    decrementCounter = () => setCounter(1);
+  if (props.counter <= 1) {
+    decrementCounter = () => props.setCounter(1);
   }
 
   useEffect(() => {
-    props.handleSelectUnitsChange(counter);
-  }, [counter, props]);
+    props.handleSelectUnitsChange(props.counter);
+  }, [props.counter, props]);
 
   return (
     <div>
@@ -28,7 +28,7 @@ function SelectQuantity(props) {
       <ButtonDecrement onClickFunc={decrementCounter} /> */}
 
       <ButtonDecrement decrementCounter={decrementCounter} />
-      <DisplayQuantity counter={counter} />
+      <DisplayQuantity counter={props.counter} />
       <ButtonIncrement incrementCounter={incrementCounter} />
     </div>
   );

@@ -31,6 +31,9 @@ function NewProductForm(props) {
   // variable de estado global para recoger el valor del input
   const [searchFilterValue, setSearchFilterValue] = useState('');
 
+  // variable de estado de counter porq la necesito aquí y no en SelectQuantity
+  const [counter, setCounter] = useState(1);
+
   // función para guardar el primer valor que escribe la user (ej: 'pe' para sugerirle 'pepino')
   const handleNameFilter = (ev) => {
     setSearchFilterValue(ev.target.value);
@@ -84,9 +87,8 @@ function NewProductForm(props) {
   //   });
   // };
 
-  //
+  // 
   const handleSelectUnitsChange = (value) => {
-    
     setProductData({
       productUnits: value,
     });
@@ -94,6 +96,8 @@ function NewProductForm(props) {
 
   // reseteamos a '' los valores de la variable de estado global para borrar los inputs cuando se envíe la info
   const resetInputValues = () => {
+    console.log("productData.productUnits "+productData.productUnits);
+    setCounter(1);
     setProductData({
       productUnits: '',
     });
@@ -150,7 +154,11 @@ function NewProductForm(props) {
           value={productData.productUnits}
         /> */}
 
-        <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/>
+        <SelectQuantity 
+        counter={counter}
+        setCounter={setCounter}
+        handleSelectUnitsChange = {handleSelectUnitsChange}
+        />
 
         {/* <SelectQuantity /> */}
 
