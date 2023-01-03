@@ -45,7 +45,7 @@ function NewProductForm(props) {
       ...productData,
       productName: searchFilterValue,
     });
-  }, [searchFilterValue]);
+  }, [searchFilterValue, productData]);
 
   // console.log("searchFilterValue " + searchFilterValue);
 
