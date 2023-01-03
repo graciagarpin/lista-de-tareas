@@ -5,14 +5,23 @@ import ButtonDecrement from './ButtonDecrement';
 
 function SelectQuantity(props) {
   const [counter, setCounter] = useState(1);
-  let incrementCounter = () => setCounter(counter + 1);
-  let decrementCounter = () => setCounter(counter - 1);
+  let incrementCounter = (ev) => {
+    
+    ev.preventDefault();
+    setCounter(counter + 1);
+  };
+  let decrementCounter = (ev) => {
+    ev.preventDefault();
+    setCounter(counter - 1);
+  };
   if (counter <= 1) {
     decrementCounter = () => setCounter(1);
   }
-  // useEffect(() => {
-  //   props.handleSelectUnitsChange(counter);
-  // }, [counter]);
+
+  useEffect(() => {
+    props.handleSelectUnitsChange(counter);
+  }, [counter, props]);
+
   return (
     <div>
       {/* como estaba:

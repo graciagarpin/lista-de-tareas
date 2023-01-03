@@ -86,7 +86,7 @@ function NewProductForm(props) {
 
   //
   const handleSelectUnitsChange = (value) => {
-    console.log(value);
+    
     setProductData({
       productUnits: value,
     });
@@ -150,9 +150,9 @@ function NewProductForm(props) {
           value={productData.productUnits}
         /> */}
 
-        {/* <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/> */}
+        <SelectQuantity handleSelectUnitsChange = {handleSelectUnitsChange}/>
 
-        <SelectQuantity />
+        {/* <SelectQuantity /> */}
 
         {/* TODO reutilizar input de tiendas más tarde */}
 
